@@ -8,20 +8,38 @@
 
 /* Begin PBXBuildFile section */
 		602D6826226EA12F0090BF02 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602D6825226EA12F0090BF02 /* AppDelegate.swift */; };
-		602D6828226EA12F0090BF02 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602D6827226EA12F0090BF02 /* ViewController.swift */; };
 		602D682B226EA12F0090BF02 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602D6829226EA12F0090BF02 /* Main.storyboard */; };
 		602D682D226EA12F0090BF02 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 602D682C226EA12F0090BF02 /* Assets.xcassets */; };
-		602D6830226EA12F0090BF02 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 602D682E226EA12F0090BF02 /* LaunchScreen.storyboard */; };
+		602D6838226EA35F0090BF02 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602D6837226EA35F0090BF02 /* UserViewController.swift */; };
+		602D683A226EA37B0090BF02 /* AddFruitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602D6839226EA37B0090BF02 /* AddFruitViewController.swift */; };
+		602D683C226EA93F0090BF02 /* AddQuantityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602D683B226EA93F0090BF02 /* AddQuantityViewController.swift */; };
+		602D6842226EB2380090BF02 /* Fruit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 602D6841226EB2380090BF02 /* Fruit.swift */; };
+		60D39776227131F0002858E6 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D39775227131F0002858E6 /* User.swift */; };
+		60D3977922713809002858E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 60D3977722713809002858E6 /* LaunchScreen.storyboard */; };
+		60D3977B22713AE2002858E6 /* ConfigurationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D3977A22713AE2002858E6 /* ConfigurationsTableViewController.swift */; };
+		60D3977F22714299002858E6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D3977D22714299002858E6 /* TableViewCell.swift */; };
+		60D3978022714299002858E6 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D3977E22714299002858E6 /* TableViewCell.xib */; };
+		C281FFD8A27A5F5C18C6E027 /* Pods_Frudder_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C845DF0945E4BAD016223A /* Pods_Frudder_.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		04C845DF0945E4BAD016223A /* Pods_Frudder_.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Frudder_.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		602D6822226EA12F0090BF02 /* Frudder!.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Frudder!.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		602D6825226EA12F0090BF02 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		602D6827226EA12F0090BF02 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		602D682A226EA12F0090BF02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		602D682C226EA12F0090BF02 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		602D682F226EA12F0090BF02 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		602D6831226EA12F0090BF02 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		602D6837226EA35F0090BF02 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		602D6839226EA37B0090BF02 /* AddFruitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFruitViewController.swift; sourceTree = "<group>"; };
+		602D683B226EA93F0090BF02 /* AddQuantityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddQuantityViewController.swift; sourceTree = "<group>"; };
+		602D6841226EB2380090BF02 /* Fruit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fruit.swift; sourceTree = "<group>"; };
+		60D39775227131F0002858E6 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		60D3977822713809002858E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		60D3977A22713AE2002858E6 /* ConfigurationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsTableViewController.swift; sourceTree = "<group>"; };
+		60D3977D22714299002858E6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		60D3977E22714299002858E6 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		74F36F4714866C7CEE7780DF /* Pods-Frudder!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frudder!.release.xcconfig"; path = "Target Support Files/Pods-Frudder!/Pods-Frudder!.release.xcconfig"; sourceTree = "<group>"; };
+		FF828C1581B6821375BCDCA3 /* Pods-Frudder!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frudder!.debug.xcconfig"; path = "Target Support Files/Pods-Frudder!/Pods-Frudder!.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +47,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C281FFD8A27A5F5C18C6E027 /* Pods_Frudder_.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31CF19FEF28EFB7F085523D4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				04C845DF0945E4BAD016223A /* Pods_Frudder_.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		602D6819226EA12F0090BF02 = {
 			isa = PBXGroup;
 			children = (
 				602D6824226EA12F0090BF02 /* Frudder! */,
 				602D6823226EA12F0090BF02 /* Products */,
+				7C875E06031B865033FFE927 /* Pods */,
+				31CF19FEF28EFB7F085523D4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +84,69 @@
 			isa = PBXGroup;
 			children = (
 				602D6825226EA12F0090BF02 /* AppDelegate.swift */,
-				602D6827226EA12F0090BF02 /* ViewController.swift */,
-				602D6829226EA12F0090BF02 /* Main.storyboard */,
-				602D682C226EA12F0090BF02 /* Assets.xcassets */,
-				602D682E226EA12F0090BF02 /* LaunchScreen.storyboard */,
+				602D683D226EB0200090BF02 /* Model */,
+				602D683E226EB0260090BF02 /* View */,
+				602D683F226EB0350090BF02 /* Controller */,
+				602D6840226EB0570090BF02 /* Supporting Files */,
 				602D6831226EA12F0090BF02 /* Info.plist */,
 			);
 			path = "Frudder!";
+			sourceTree = "<group>";
+		};
+		602D683D226EB0200090BF02 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				602D6841226EB2380090BF02 /* Fruit.swift */,
+				60D39775227131F0002858E6 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		602D683E226EB0260090BF02 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				60D3977722713809002858E6 /* LaunchScreen.storyboard */,
+				602D6829226EA12F0090BF02 /* Main.storyboard */,
+				60D3977C22714280002858E6 /* Custom Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		602D683F226EB0350090BF02 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				602D6837226EA35F0090BF02 /* UserViewController.swift */,
+				602D6839226EA37B0090BF02 /* AddFruitViewController.swift */,
+				602D683B226EA93F0090BF02 /* AddQuantityViewController.swift */,
+				60D3977A22713AE2002858E6 /* ConfigurationsTableViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		602D6840226EB0570090BF02 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				602D682C226EA12F0090BF02 /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		60D3977C22714280002858E6 /* Custom Cell */ = {
+			isa = PBXGroup;
+			children = (
+				60D3977D22714299002858E6 /* TableViewCell.swift */,
+				60D3977E22714299002858E6 /* TableViewCell.xib */,
+			);
+			path = "Custom Cell";
+			sourceTree = "<group>";
+		};
+		7C875E06031B865033FFE927 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF828C1581B6821375BCDCA3 /* Pods-Frudder!.debug.xcconfig */,
+				74F36F4714866C7CEE7780DF /* Pods-Frudder!.release.xcconfig */,
+			);
+			path = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 602D6834226EA12F0090BF02 /* Build configuration list for PBXNativeTarget "Frudder!" */;
 			buildPhases = (
+				3E8627CE6187A185FED0F4ED /* [CP] Check Pods Manifest.lock */,
 				602D681E226EA12F0090BF02 /* Sources */,
 				602D681F226EA12F0090BF02 /* Frameworks */,
 				602D6820226EA12F0090BF02 /* Resources */,
+				34F77917CE77047C1556F78C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -122,7 +209,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				602D6830226EA12F0090BF02 /* LaunchScreen.storyboard in Resources */,
+				60D3977922713809002858E6 /* LaunchScreen.storyboard in Resources */,
+				60D3978022714299002858E6 /* TableViewCell.xib in Resources */,
 				602D682D226EA12F0090BF02 /* Assets.xcassets in Resources */,
 				602D682B226EA12F0090BF02 /* Main.storyboard in Resources */,
 			);
@@ -130,13 +218,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		34F77917CE77047C1556F78C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Frudder!/Pods-Frudder!-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/ChameleonFramework/ChameleonFramework.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChameleonFramework.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Frudder!/Pods-Frudder!-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3E8627CE6187A185FED0F4ED /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Frudder!-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		602D681E226EA12F0090BF02 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				602D6828226EA12F0090BF02 /* ViewController.swift in Sources */,
+				602D6842226EB2380090BF02 /* Fruit.swift in Sources */,
+				60D3977F22714299002858E6 /* TableViewCell.swift in Sources */,
+				60D3977B22713AE2002858E6 /* ConfigurationsTableViewController.swift in Sources */,
 				602D6826226EA12F0090BF02 /* AppDelegate.swift in Sources */,
+				60D39776227131F0002858E6 /* User.swift in Sources */,
+				602D683C226EA93F0090BF02 /* AddQuantityViewController.swift in Sources */,
+				602D6838226EA35F0090BF02 /* UserViewController.swift in Sources */,
+				602D683A226EA37B0090BF02 /* AddFruitViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,10 +296,10 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		602D682E226EA12F0090BF02 /* LaunchScreen.storyboard */ = {
+		60D3977722713809002858E6 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				602D682F226EA12F0090BF02 /* Base */,
+				60D3977822713809002858E6 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -280,6 +425,7 @@
 		};
 		602D6835226EA12F0090BF02 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF828C1581B6821375BCDCA3 /* Pods-Frudder!.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -291,12 +437,13 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "NA.Frudder-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		602D6836226EA12F0090BF02 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 74F36F4714866C7CEE7780DF /* Pods-Frudder!.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -308,7 +455,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "NA.Frudder-";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
