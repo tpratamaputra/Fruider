@@ -14,7 +14,10 @@ class FruitDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var fruitTitle: UILabel!
     @IBOutlet weak var fruitDescription: UILabel!
     @IBOutlet weak var nutritionTitle: UILabel!
-    @IBOutlet weak var nutritionDetail: UILabel!
+    @IBOutlet weak var nutritionDetailVitamin: UILabel!
+    @IBOutlet weak var nutritionDetailCal: UILabel!
+    @IBOutlet weak var nutritionDetailCarb: UILabel!
+    @IBOutlet weak var nutritionDetailGluc: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -11,7 +11,7 @@ import UIKit
 class AddQuantityViewController: UIViewController {
     
     // MARK: - Declare variable(s) here
-    var tempFruit : String = String()
+    var tempFruit : Int = Int()
     
     var numberLOV : [String] = ["1", "2", "3", "4", "5"]
     
@@ -31,7 +31,7 @@ class AddQuantityViewController: UIViewController {
         
         quantityLabel.text = Int(stepperOutlet.minimumValue).description
         
-        fruitImage.image = #imageLiteral(resourceName: "strawberry")
+        //fruitImage.image = #imageLiteral(resourceName: "strawberry")
         fruitImage.layer.cornerRadius = fruitImage.frame.size.width / 2
         fruitImage.clipsToBounds = true
     }

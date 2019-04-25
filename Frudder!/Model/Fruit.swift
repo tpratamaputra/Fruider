@@ -10,6 +10,12 @@ import Foundation
 import RealmSwift
 
 class Fruit: Object {
-    @objc dynamic var name: String = String()
-    @objc dynamic var quantity: Int = 0
+    @objc dynamic var fruitID: Int = Int()
+    @objc dynamic var fruitName: String = String()
+    @objc dynamic var funFacts: String = String()
+    @objc dynamic var glucoseContent: Int = Int()
+    @objc dynamic var vitaminContent: String = String()
+    @objc dynamic var carboContent: Int = Int()
+    @objc dynamic var calContent: Int = Int()
+    
 }

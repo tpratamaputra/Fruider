@@ -21,7 +21,8 @@ class UserViewController: UIViewController {
     //TODO: - User default plist declaration (for user configurations)
     let userDefault = UserDefaults.standard
     
-    var fruitArray : Results<Fruit>?
+    var fruitArray: Results<Fruit>?
+    var userArray: Results<User>?
 
     @IBOutlet weak var reminderTableView: UITableView!
     @IBOutlet weak var welcomeUserText: UILabel!
@@ -33,15 +34,66 @@ class UserViewController: UIViewController {
         navigationController?.navigationBar.tintColor = .orange
         
         //Add dummy fruit func.
-        /*let fruit = Fruit()
-        fruit.name = "Banana"
+        /* let fruit = Fruit()
+        fruit.fruitID = 0
+        fruit.fruitName = "Apple"
+        fruit.funFacts = "High source of dietary fiber"
+        fruit.glucoseContent = 25
+        fruit.carboContent = 34
+        fruit.calContent = 130
+        fruit.vitaminContent = "Vitamin C, Vitamin A"
+        
         let fruit2 = Fruit()
-        fruit2.name = "Mangosteen"
+        fruit2.fruitID = 1
+        fruit2.fruitName = "Guava"
+        fruit2.funFacts = "Rich of vitamin C, high source of dietary fiber"
+        fruit2.glucoseContent = 8
+        fruit2.carboContent = 13
+        fruit2.calContent = 60
+        fruit2.vitaminContent = "Vitamin C, Vitamin A"
+        
         let fruit3 = Fruit()
-        fruit3.name = "Jackfruit"
+        fruit3.fruitID = 2
+        fruit3.fruitName = "Banana"
+        fruit3.funFacts = "High source of dietary fiber"
+        fruit3.glucoseContent = 25
+        fruit3.carboContent = 34
+        fruit3.calContent = 130
+        fruit3.vitaminContent = "Vitamin C, Vitamin A"
+        
+        let fruit4 = Fruit()
+        fruit4.fruitID = 3
+        fruit4.fruitName = "Orange"
+        fruit4.funFacts = "Rich of vitamin C, high source of dietary fiber"
+        fruit4.glucoseContent = 8
+        fruit4.carboContent = 13
+        fruit4.calContent = 60
+        fruit4.vitaminContent = "Vitamin C, Vitamin A"
+        
+        let fruit5 = Fruit()
+        fruit5.fruitID = 4
+        fruit5.fruitName = "Soursop"
+        fruit5.funFacts = "High source of dietary fiber"
+        fruit5.glucoseContent = 25
+        fruit5.carboContent = 34
+        fruit5.calContent = 130
+        fruit5.vitaminContent = "Vitamin C, Vitamin A"
+        
+        let fruit6 = Fruit()
+        fruit6.fruitID = 5
+        fruit6.fruitName = "Mangosteen"
+        fruit6.funFacts = "Rich of vitamin C, high source of dietary fiber"
+        fruit6.glucoseContent = 8
+        fruit6.carboContent = 13
+        fruit6.calContent = 60
+        fruit6.vitaminContent = "Vitamin C, Vitamin A"
+        
         saveObj(object: fruit)
         saveObj(object: fruit2)
-        saveObj(object: fruit3)*/
+        saveObj(object: fruit3)
+        saveObj(object: fruit4)
+        saveObj(object: fruit5)
+        saveObj(object: fruit6) */
         
         //TODO: - loadObj from local database
         loadObj()
@@ -50,6 +102,8 @@ class UserViewController: UIViewController {
         reminderTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         
         //MARK: - userDefault line of code(s)
+        userDefault.set(Date(), forKey: "userLastAccessed")
+        
         if !Calendar.current.isDateInToday(userDefault.object(forKey: "userLastAccessed") as! Date) {
             userDefault.set(Date(), forKey: "userLastAccessed")
         }
@@ -58,9 +112,14 @@ class UserViewController: UIViewController {
             //print(userDefault.object(forKey: "userLastAccessed"))
         }
         
+        //TODO: - Add user to .plist using user default
         if let userName = userDefault.string(forKey: "userName") {
-            welcomeUserText.text = "Hi, \(userName)!"
             welcomeUserText.textColor = .white
+            welcomeUserText.text = "Hi, \(userName)!"
+        }
+        else {
+            welcomeUserText.textColor = .white
+            welcomeUserText.text = "Hi, Wilbert!"
         }
     }
     
@@ -74,6 +133,7 @@ class UserViewController: UIViewController {
     
     func loadObj () {
         fruitArray = realm.objects(Fruit.self)
+        userArray = realm.objects(User.self)
         reminderTableView.reloadData()
     }
     
@@ -143,9 +203,9 @@ extension UserViewController: UITableViewDataSource {
         cell.layer.cornerRadius = 10
         cell.cellImage.layer.cornerRadius = 17
         cell.cellImage.clipsToBounds = true
-        cell.cellImage.image = UIImage(named: "strawberry")
-        cell.cellTitle.text = fruitArray?[indexPath.row].name
-        cell.cellDescription.text = "\(fruitArray![indexPath.row].quantity)"
+        cell.cellImage.image = UIImage(named: "\(fruitArray![indexPath.row].fruitID)")
+        cell.cellTitle.text = fruitArray?[indexPath.row].fruitName
+        cell.cellDescription.text = "0"
         return cell
     }
     
@@ -161,17 +221,18 @@ extension UserViewController: UITableViewDataSource {
             do {
                 try self.realm.write {
                     self.realm.delete(checkData!)
+                    self.fruitArray = self.fruitArray?.sorted(byKeyPath: "fruitID")
+                    self.reminderTableView.reloadData()
                 }
             } catch {
                 print("Error deleting object(s)")
             }
-            self.reminderTableView.reloadData()
+            
             completion(true)
         }
-        action.image = #imageLiteral(resourceName: "icon-checkmark")
+        //action.image = #imageLiteral(resourceName: "icon-checkmark")
         action.backgroundColor = #colorLiteral(red: 0, green: 0.8883596063, blue: 0, alpha: 1)
         return action
-        
     }
     
 }

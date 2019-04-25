@@ -45,7 +45,7 @@ class AddFruitViewController: UIViewController {
         let destinationVC = segue.destination as! AddQuantityViewController
     
         if let indexPath = fruitTableView.indexPathForSelectedRow {
-            destinationVC.tempFruit = fruitArray![indexPath.row].name
+            destinationVC.tempFruit = fruitArray![indexPath.row].fruitID
         }
     }
 }
@@ -63,16 +63,20 @@ extension AddFruitViewController : UITableViewDataSource {
         cell.backgroundColor = .clear
         cell.fruitImage.layer.cornerRadius = 17
         cell.fruitImage.clipsToBounds = true
-        cell.fruitImage.image = UIImage(named: "strawberry")
-        cell.fruitTitle.text = fruitArray?[indexPath.row].name
-        cell.fruitImage.image =  #imageLiteral(resourceName: "strawberry")
+        cell.fruitTitle.text = fruitArray?[indexPath.row].fruitName
+        cell.fruitDescription.text = fruitArray?[indexPath.row].funFacts
+        cell.fruitImage.image = UIImage(named: "\(fruitArray?[indexPath.row].fruitID ?? 1)")
+        cell.nutritionTitle.text = "Content(s)"
+        cell.nutritionDetailVitamin.text = fruitArray?[indexPath.row].vitaminContent
+        cell.nutritionDetailCal.text = fruitArray?[indexPath.row].calContent.description
+        cell.nutritionDetailCarb.text = fruitArray?[indexPath.row].carboContent.description
+        cell.nutritionDetailGluc.text = fruitArray?[indexPath.row].glucoseContent.description
         return cell
     }
 }
 
 //MARK : - UITableView delegate method(s)
 extension AddFruitViewController : UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToAddQuantity", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
