@@ -20,7 +20,8 @@ class AddFruitViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.flatLime()
+        view.backgroundColor = .white
+        fruitTableView.register(UINib(nibName: "FruitDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "fruitDetailCell")
         loadObj()
     }
     
@@ -53,14 +54,18 @@ class AddFruitViewController: UIViewController {
 extension AddFruitViewController : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         tableView.backgroundColor = .clear
         return fruitArray?.count ?? 1
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "prototypeCell", for: indexPath)
-        cell.backgroundColor = UIColor.flatGreen()
-        cell.textLabel?.text = fruitArray?[indexPath.row].name
+        let cell = tableView.dequeueReusableCell(withIdentifier: "fruitDetailCell", for: indexPath) as! FruitDetailTableViewCell
+        cell.backgroundColor = .clear
+        cell.fruitImage.layer.cornerRadius = 17
+        cell.fruitImage.clipsToBounds = true
+        cell.fruitImage.image = UIImage(named: "strawberry")
+        cell.fruitTitle.text = fruitArray?[indexPath.row].name
+        cell.fruitImage.image =  #imageLiteral(resourceName: "strawberry")
         return cell
     }
 }

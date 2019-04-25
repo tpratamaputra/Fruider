@@ -19,6 +19,8 @@
 		60D3977B22713AE2002858E6 /* ConfigurationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D3977A22713AE2002858E6 /* ConfigurationsTableViewController.swift */; };
 		60D3977F22714299002858E6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D3977D22714299002858E6 /* TableViewCell.swift */; };
 		60D3978022714299002858E6 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D3977E22714299002858E6 /* TableViewCell.xib */; };
+		60DDBCD52271AC50001C362F /* FruitDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDBCD32271AC50001C362F /* FruitDetailTableViewCell.swift */; };
+		60DDBCD62271AC50001C362F /* FruitDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60DDBCD42271AC50001C362F /* FruitDetailTableViewCell.xib */; };
 		C281FFD8A27A5F5C18C6E027 /* Pods_Frudder_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C845DF0945E4BAD016223A /* Pods_Frudder_.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +40,8 @@
 		60D3977A22713AE2002858E6 /* ConfigurationsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurationsTableViewController.swift; sourceTree = "<group>"; };
 		60D3977D22714299002858E6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		60D3977E22714299002858E6 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
+		60DDBCD32271AC50001C362F /* FruitDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitDetailTableViewCell.swift; sourceTree = "<group>"; };
+		60DDBCD42271AC50001C362F /* FruitDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitDetailTableViewCell.xib; sourceTree = "<group>"; };
 		74F36F4714866C7CEE7780DF /* Pods-Frudder!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frudder!.release.xcconfig"; path = "Target Support Files/Pods-Frudder!/Pods-Frudder!.release.xcconfig"; sourceTree = "<group>"; };
 		FF828C1581B6821375BCDCA3 /* Pods-Frudder!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frudder!.debug.xcconfig"; path = "Target Support Files/Pods-Frudder!/Pods-Frudder!.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,7 +111,8 @@
 			children = (
 				60D3977722713809002858E6 /* LaunchScreen.storyboard */,
 				602D6829226EA12F0090BF02 /* Main.storyboard */,
-				60D3977C22714280002858E6 /* Custom Cell */,
+				60DDBCD22271AAD9001C362F /* Fruit Detail Cell */,
+				60D3977C22714280002858E6 /* Stack Cell */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -131,13 +136,22 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		60D3977C22714280002858E6 /* Custom Cell */ = {
+		60D3977C22714280002858E6 /* Stack Cell */ = {
 			isa = PBXGroup;
 			children = (
 				60D3977D22714299002858E6 /* TableViewCell.swift */,
 				60D3977E22714299002858E6 /* TableViewCell.xib */,
 			);
-			path = "Custom Cell";
+			path = "Stack Cell";
+			sourceTree = "<group>";
+		};
+		60DDBCD22271AAD9001C362F /* Fruit Detail Cell */ = {
+			isa = PBXGroup;
+			children = (
+				60DDBCD32271AC50001C362F /* FruitDetailTableViewCell.swift */,
+				60DDBCD42271AC50001C362F /* FruitDetailTableViewCell.xib */,
+			);
+			path = "Fruit Detail Cell";
 			sourceTree = "<group>";
 		};
 		7C875E06031B865033FFE927 /* Pods */ = {
@@ -212,6 +226,7 @@
 				60D3977922713809002858E6 /* LaunchScreen.storyboard in Resources */,
 				60D3978022714299002858E6 /* TableViewCell.xib in Resources */,
 				602D682D226EA12F0090BF02 /* Assets.xcassets in Resources */,
+				60DDBCD62271AC50001C362F /* FruitDetailTableViewCell.xib in Resources */,
 				602D682B226EA12F0090BF02 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -279,6 +294,7 @@
 				60D3977B22713AE2002858E6 /* ConfigurationsTableViewController.swift in Sources */,
 				602D6826226EA12F0090BF02 /* AppDelegate.swift in Sources */,
 				60D39776227131F0002858E6 /* User.swift in Sources */,
+				60DDBCD52271AC50001C362F /* FruitDetailTableViewCell.swift in Sources */,
 				602D683C226EA93F0090BF02 /* AddQuantityViewController.swift in Sources */,
 				602D6838226EA35F0090BF02 /* UserViewController.swift in Sources */,
 				602D683A226EA37B0090BF02 /* AddFruitViewController.swift in Sources */,

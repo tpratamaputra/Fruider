@@ -6,18 +6,6 @@
 //  Copyright © 2019 NA. All rights reserved.
 //
 
-//Add dummy fruit to database func.
-/*let fruit = Fruit()
-fruit.name = "Banana"
-let fruit2 = Fruit()
-fruit.name = "Mangosteen"
-let fruit3 = Fruit()
-fruit.name = "Jackfruit"
-saveObj(object: fruit)
-saveObj(object: fruit2)
-saveObj(object: fruit3)*/
-
-
 import UIKit
 import RealmSwift
 import ChameleonFramework
@@ -37,12 +25,12 @@ class UserViewController: UIViewController {
 
     @IBOutlet weak var reminderTableView: UITableView!
     @IBOutlet weak var welcomeUserText: UILabel!
-    //@IBOutlet weak var welcomeReminderText: UILabel!
     @IBOutlet weak var buttonOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        navigationController?.navigationBar.tintColor = .orange
         
         //Add dummy fruit func.
         /*let fruit = Fruit()
@@ -57,10 +45,6 @@ class UserViewController: UIViewController {
         
         //TODO: - loadObj from local database
         loadObj()
-        
-        //welcomeReminderText.text = " "
-        
-        buttonOutlet.backgroundColor = UIColor.flatPowderBlue()
         
         //MARK: - Load tableView custom cell
         reminderTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
@@ -87,7 +71,6 @@ class UserViewController: UIViewController {
     @IBAction func configButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "goToConfigurations", sender: self)
     }
-    
     
     func loadObj () {
         fruitArray = realm.objects(Fruit.self)
@@ -148,21 +131,21 @@ class UserViewController: UIViewController {
 //MARK : - UITableView dataSource method(s)
 extension UserViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.separatorStyle = .none
+        tableView.separatorStyle = .singleLine
         tableView.backgroundColor = .clear
-        return 1
+        return fruitArray?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         //let cell = tableView.dequeueReusableCell(withIdentifier: "prototypeCell", for: indexPath)
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! TableViewCell
-        cell.backgroundColor = UIColor.flatOrange()
+        cell.backgroundColor = .clear
         cell.layer.cornerRadius = 10
-        cell.cellImage.layer.cornerRadius = cell.cellImage.frame.size.width / 2
+        cell.cellImage.layer.cornerRadius = 17
         cell.cellImage.clipsToBounds = true
-        cell.cellImage.image = UIImage(named: "pineapple")
-        cell.cellTitle.text = fruitArray?[indexPath.section].name
-        cell.cellDescription.text = "\(fruitArray![indexPath.section].quantity)"
+        cell.cellImage.image = UIImage(named: "strawberry")
+        cell.cellTitle.text = fruitArray?[indexPath.row].name
+        cell.cellDescription.text = "\(fruitArray![indexPath.row].quantity)"
         return cell
     }
     
@@ -186,7 +169,7 @@ extension UserViewController: UITableViewDataSource {
             completion(true)
         }
         action.image = #imageLiteral(resourceName: "icon-checkmark")
-        action.backgroundColor = .green
+        action.backgroundColor = #colorLiteral(red: 0, green: 0.8883596063, blue: 0, alpha: 1)
         return action
         
     }
@@ -196,19 +179,6 @@ extension UserViewController: UITableViewDataSource {
 //MARK : - UITableView delegate method(s)
 extension UserViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return fruitArray?.count ?? 1
-    }
-    
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 10.0
-    }
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
-        headerView.backgroundColor = .clear
-        return headerView
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
