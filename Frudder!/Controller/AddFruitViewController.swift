@@ -26,6 +26,7 @@ class AddFruitViewController: UIViewController {
     
     func loadObj () {
         fruitArray = realm.objects(Fruit.self)
+        fruitTableView.reloadData()
     }
     
     func saveObj (object: Fruit) {

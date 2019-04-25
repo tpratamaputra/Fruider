@@ -40,7 +40,6 @@ class AddQuantityViewController: UIViewController {
     @IBAction func addButtonPressed(_ sender: Any) {
         navigationController?.popToRootViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
-        
     }
 }
 

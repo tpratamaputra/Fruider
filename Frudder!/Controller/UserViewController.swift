@@ -6,6 +6,18 @@
 //  Copyright © 2019 NA. All rights reserved.
 //
 
+//Add dummy fruit to database func.
+/*let fruit = Fruit()
+fruit.name = "Banana"
+let fruit2 = Fruit()
+fruit.name = "Mangosteen"
+let fruit3 = Fruit()
+fruit.name = "Jackfruit"
+saveObj(object: fruit)
+saveObj(object: fruit2)
+saveObj(object: fruit3)*/
+
+
 import UIKit
 import RealmSwift
 import ChameleonFramework
@@ -25,17 +37,28 @@ class UserViewController: UIViewController {
 
     @IBOutlet weak var reminderTableView: UITableView!
     @IBOutlet weak var welcomeUserText: UILabel!
-    @IBOutlet weak var welcomeReminderText: UILabel!
+    //@IBOutlet weak var welcomeReminderText: UILabel!
     @IBOutlet weak var buttonOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor.flatSkyBlueColorDark()
+        view.backgroundColor = .white
+        
+        //Add dummy fruit func.
+        /*let fruit = Fruit()
+        fruit.name = "Banana"
+        let fruit2 = Fruit()
+        fruit2.name = "Mangosteen"
+        let fruit3 = Fruit()
+        fruit3.name = "Jackfruit"
+        saveObj(object: fruit)
+        saveObj(object: fruit2)
+        saveObj(object: fruit3)*/
         
         //TODO: - loadObj from local database
         loadObj()
         
-        welcomeReminderText.text = "Input user reminder text here."
+        //welcomeReminderText.text = " "
         
         buttonOutlet.backgroundColor = UIColor.flatPowderBlue()
         
@@ -52,7 +75,8 @@ class UserViewController: UIViewController {
         }
         
         if let userName = userDefault.string(forKey: "userName") {
-            welcomeUserText.text = "Welcome \(userName),"
+            welcomeUserText.text = "Hi, \(userName)!"
+            welcomeUserText.textColor = .white
         }
     }
     
@@ -104,6 +128,7 @@ class UserViewController: UIViewController {
         notificationContent.body = "This is it"
         
         //Creating trigger for the notification
+        //TODO: - Change the timeTrigger to user preferences interval
         let timeTrigger = Date().addingTimeInterval(20)
         
         let timeComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: timeTrigger)
@@ -125,32 +150,39 @@ extension UserViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
-        return fruitArray?.count ?? 1
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "prototypeCell", for: indexPath)
-        cell.backgroundColor = UIColor.flatPowderBlue()
+        //let cell = tableView.dequeueReusableCell(withIdentifier: "prototypeCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! TableViewCell
+        cell.backgroundColor = UIColor.flatOrange()
         cell.layer.cornerRadius = 10
-        cell.textLabel?.text = fruitArray?[indexPath.row].name
-        cell.detailTextLabel?.text = "\(fruitArray![indexPath.row].quantity)"
+        cell.cellImage.layer.cornerRadius = cell.cellImage.frame.size.width / 2
+        cell.cellImage.clipsToBounds = true
+        cell.cellImage.image = UIImage(named: "pineapple")
+        cell.cellTitle.text = fruitArray?[indexPath.section].name
+        cell.cellDescription.text = "\(fruitArray![indexPath.section].quantity)"
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60.0
-    }
-    
+    //Swipe action func.
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let isDone = isCompleted(at: indexPath)
         return UISwipeActionsConfiguration(actions: [isDone])
-    }
+    } 
     
     func isCompleted (at indexPath: IndexPath) -> UIContextualAction {
         let checkData = fruitArray?[indexPath.row]
         let action = UIContextualAction(style: .destructive, title: "Completed") { (action, view, completion) in
-            self.realm.delete(checkData!)
-            self.loadObj()
+            do {
+                try self.realm.write {
+                    self.realm.delete(checkData!)
+                }
+            } catch {
+                print("Error deleting object(s)")
+            }
+            self.reminderTableView.reloadData()
             completion(true)
         }
         action.image = #imageLiteral(resourceName: "icon-checkmark")
@@ -164,5 +196,19 @@ extension UserViewController: UITableViewDataSource {
 //MARK : - UITableView delegate method(s)
 extension UserViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    }
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return fruitArray?.count ?? 1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10.0
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = UIView()
+        headerView.backgroundColor = .clear
+        return headerView
     }
 }
