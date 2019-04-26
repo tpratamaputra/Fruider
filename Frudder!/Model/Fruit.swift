@@ -16,7 +16,7 @@ class Fruit: Object {
     @objc dynamic var fruitDesc: String = String()
     @objc dynamic var totalFat: Int = Int()
     @objc dynamic var sodiumContent: Int = Int()
-    @objc dynamic var glucoseContent: Int = Int()
+    @objc dynamic var sugarContent: Int = Int()
     @objc dynamic var vitaminAContent: Int = Int()
     @objc dynamic var vitaminCContent: Int = Int()
     @objc dynamic var calciumContent: Int = Int()
@@ -24,4 +24,5 @@ class Fruit: Object {
     @objc dynamic var carboContent: Int = Int()
     @objc dynamic var calContent: Int = Int()
     @objc dynamic var caloriesFromFat: Int = Int()
+    @objc dynamic var servingPortion: String = String()
 }

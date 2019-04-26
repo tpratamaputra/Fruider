@@ -17,6 +17,7 @@ class FruitDetailTableViewCell: UITableViewCell {
     @IBOutlet weak var fruitImage: UIImageView!
     @IBOutlet weak var fruitTitle: UILabel!
     @IBOutlet weak var fruitDescription: UILabel!
+    @IBOutlet weak var darkenView: UIView!
     
     var fruit: Fruit!
     

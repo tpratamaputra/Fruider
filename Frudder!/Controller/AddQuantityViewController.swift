@@ -53,7 +53,7 @@ class AddQuantityViewController: UIViewController {
         stepperOutlet.maximumValue = 5
         stepperOutlet.minimumValue = 0
         stepperOutlet.autorepeat = false
-        stepperOutlet.wraps = true
+        stepperOutlet.wraps = false
         
         quantityLabel.text = Int(stepperOutlet.minimumValue).description
         quantityLabel.textColor = .white

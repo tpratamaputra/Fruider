@@ -27,6 +27,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var reminderTableView: UITableView!
     @IBOutlet weak var welcomeUserText: UILabel!
     @IBOutlet weak var buttonOutlet: UIButton!
+    @IBOutlet weak var buttonFrame: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +42,14 @@ class UserViewController: UIViewController {
         fruit.fruitDesc = "Refrigerate apple(s) in plastic bag away from strong-odored foods. Consume within 3 weeks."
         fruit.totalFat = 0
         fruit.sodiumContent = 80
-        fruit.glucoseContent = 25
+        fruit.sugarContent = 25
         fruit.carboContent = 34
         fruit.calContent = 130
         fruit.vitaminAContent = 2
         fruit.vitaminCContent = 8
         fruit.calciumContent = 2
         fruit.ironContent = 2
+        fruit.servingPortion = "1 Large Apple (242g)"
         
         let fruit2 = Fruit()
         fruit2.fruitID = 1
@@ -56,13 +58,14 @@ class UserViewController: UIViewController {
         fruit2.fruitDesc = "Ripen guava(s) at room temperature until they give to gentle pressure. Refrigerate guava(s) immediately, and use within 4 days."
         fruit2.totalFat = 1
         fruit2.sodiumContent = 0
-        fruit2.glucoseContent = 8
+        fruit2.sugarContent = 8
         fruit2.carboContent = 13
         fruit2.calContent = 60
         fruit2.vitaminAContent = 10
         fruit2.vitaminCContent = 340
         fruit2.calciumContent = 2
         fruit2.ironContent = 2
+        fruit2.servingPortion = "1 Fruit (90g)"
         
         let fruit3 = Fruit()
         fruit3.fruitID = 2
@@ -71,13 +74,14 @@ class UserViewController: UIViewController {
         fruit3.fruitDesc = "Store unripe banana(s) at room temperature. Store ripe banana(s) in refrigerator for up to two weeks; skin may turn black."
         fruit3.totalFat = 0
         fruit3.sodiumContent = 0
-        fruit3.glucoseContent = 19
+        fruit3.sugarContent = 19
         fruit3.carboContent = 30
         fruit3.calContent = 100
         fruit3.vitaminAContent = 2
         fruit3.vitaminCContent = 15
         fruit3.calciumContent = 0
         fruit3.ironContent = 2
+        fruit3.servingPortion = "1 Medium Banana (126g)"
         
         let fruit4 = Fruit()
         fruit4.fruitID = 3
@@ -86,13 +90,14 @@ class UserViewController: UIViewController {
         fruit4.fruitDesc = "Store orange(s) at room temperature for one to two days, refrigerate for one to two weeks."
         fruit4.totalFat = 0
         fruit4.sodiumContent = 0
-        fruit4.glucoseContent = 9
+        fruit4.sugarContent = 9
         fruit4.carboContent = 19
         fruit4.calContent = 80
         fruit4.vitaminAContent = 2
         fruit4.vitaminCContent = 130
         fruit4.calciumContent = 6
         fruit4.ironContent = 0
+        fruit4.servingPortion = "1 Medium Orange (154g)"
         
         let fruit5 = Fruit()
         fruit5.fruitID = 4
@@ -101,13 +106,14 @@ class UserViewController: UIViewController {
         fruit5.fruitDesc = "Do not wash strawberry until they are ready to eat. Store in refrigerator for one to three days."
         fruit5.totalFat = 0
         fruit5.sodiumContent = 0
-        fruit5.glucoseContent = 8
+        fruit5.sugarContent = 8
         fruit5.carboContent = 11
         fruit5.calContent = 50
         fruit5.vitaminAContent = 0
         fruit5.vitaminCContent = 160
         fruit5.calciumContent = 2
         fruit5.ironContent = 2
+        fruit5.servingPortion = "2 Medium Strawberries (67g)"
         
         do{
             try realm.write {
@@ -162,7 +168,7 @@ class UserViewController: UIViewController {
         reminderTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         
         //MARK: - userDefault line of code(s)
-        //userDefault.set(Date(), forKey: "userLastAccessed")
+        userDefault.set(Date(), forKey: "userLastAccessed")
         
         if !Calendar.current.isDateInToday(userDefault.object(forKey: "userLastAccessed") as! Date) {
             userDefault.set(Date(), forKey: "userLastAccessed")
@@ -181,6 +187,10 @@ class UserViewController: UIViewController {
             welcomeUserText.textColor = .white
             welcomeUserText.text = "Hi, Wilbert!"
         }
+        
+        buttonFrame.layer.cornerRadius = buttonFrame.frame.size.width / 2
+        buttonFrame.backgroundColor = .orange
+        buttonOutlet.adjustsImageWhenHighlighted = false
     }
     
     @IBAction func addButtonPressed(_ sender: Any) {
@@ -262,7 +272,8 @@ extension UserViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! TableViewCell
         cell.backgroundColor = .clear
         cell.layer.cornerRadius = 10
-        cell.cellImage.layer.cornerRadius = 17
+        //cell.cellImage.layer.cornerRadius = 17
+        cell.cellImage.layer.cornerRadius = cell.cellImage.frame.size.width / 2
         cell.cellImage.clipsToBounds = true
         cell.cellImage.image = UIImage(named: "\(fruitArray?[(userArray![indexPath.row].fruitIDtoEat)].fruitID ?? 0)")
         cell.cellTitle.text = fruitArray?[(userArray![indexPath.row].fruitIDtoEat)].fruitName

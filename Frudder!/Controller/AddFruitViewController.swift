@@ -42,12 +42,12 @@ class AddFruitViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "goToAddQuantityViewController" {
+        if segue.identifier == "goToAddQuantity" {
         
             let destinationVC = segue.destination as! AddQuantityViewController
             
             if let indexPath = fruitTableView.indexPathForSelectedRow {
-                destinationVC.tempFruitID = fruitArray![indexPath.row].fruitID
+                destinationVC.tempFruitID = indexPath.row
             }
         }
         
@@ -65,7 +65,7 @@ class AddFruitViewController: UIViewController {
 extension AddFruitViewController : UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        tableView.separatorStyle = .singleLine
+        tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
         return fruitArray?.count ?? 1
     }
@@ -80,6 +80,8 @@ extension AddFruitViewController : UITableViewDataSource {
         cell.fruitDescription.textColor = .black
         cell.fruitImage.image = UIImage(named: "\(fruitArray?[indexPath.row].fruitID ?? 1)")
         cell.fruitImage.backgroundColor = .black
+        cell.darkenView.backgroundColor = .black
+        cell.darkenView.alpha = 0.2
         cell.delegate = self
         return cell
     }
@@ -89,7 +91,7 @@ extension AddFruitViewController : UITableViewDataSource {
 //MARK : - UITableView delegate method(s)
 extension AddFruitViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToAddQuantity", sender: indexPath)
+        performSegue(withIdentifier: "goToAddQuantity", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
