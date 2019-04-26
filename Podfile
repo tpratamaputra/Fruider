@@ -9,5 +9,6 @@ target 'Frudder!' do
 
 pod 'ChameleonFramework'
 pod 'RealmSwift'
+pod 'SVProgressHUD'
 
 end

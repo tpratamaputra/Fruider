@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SVProgressHUD
 
 class AddQuantityViewController: UIViewController {
     
@@ -100,7 +101,16 @@ class AddQuantityViewController: UIViewController {
                 print("\(error)")
 
             }
+            SVProgressHUD.showSuccess(withStatus: "Success!")
+            SVProgressHUD.dismiss(withDelay: 0.75)
         }
+        else {
+            SVProgressHUD.showError(withStatus: "Try again!")
+        }
+        Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: Selector(("dismissVC")), userInfo: nil, repeats: false)
+    }
+    
+    @objc func dismissVC () {
         navigationController?.popToRootViewController(animated: true)
         self.dismiss(animated: true, completion: nil)
     }
