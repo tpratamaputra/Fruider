@@ -150,7 +150,7 @@
             </objects>
             <point key="canvasLocation" x="1222" y="794"/>
         </scene>
-        <!--Add Fruid-->
+        <!--Choose fruid!-->
         <scene sceneID="E3l-FE-dg2">
             <objects>
                 <viewController id="lRV-sQ-C4G" customClass="AddFruitViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
@@ -197,7 +197,7 @@
                                     <outlet property="delegate" destination="lRV-sQ-C4G" id="VCL-BM-U1r"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k5e-kW-jdP">
+                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for fruid here!" translatesAutoresizingMaskIntoConstraints="NO" id="k5e-kW-jdP">
                                 <rect key="frame" x="0.0" y="87" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -209,19 +209,64 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HnU-qz-nz6"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Fruid" id="HsQ-kP-LBo">
+                    <navigationItem key="navigationItem" title="Choose fruid!" id="HsQ-kP-LBo">
                         <barButtonItem key="backBarButtonItem" title="Back" id="f79-MG-f5g"/>
                     </navigationItem>
                     <connections>
                         <outlet property="fruitTableView" destination="COm-th-n5C" id="akY-w4-Gne"/>
                         <segue destination="XIT-zM-BXz" kind="show" identifier="goToAddQuantity" id="ZSE-FE-NDD"/>
+                        <segue destination="rQH-tT-IsX" kind="push" identifier="goToFruitInfo" id="UvH-IM-Sfs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h8f-Ci-EMn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1221.7391304347827" y="-105.13392857142857"/>
         </scene>
-        <!--Add Quantity View Controller-->
+        <!--Fruid Info-->
+        <scene sceneID="evu-JF-rbr">
+            <objects>
+                <viewController id="rQH-tT-IsX" customClass="FruitInfoViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W7q-SV-Uz4" customClass="FruitInf">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Pyt-th-J3g">
+                                <rect key="frame" x="0.0" y="88" width="414" height="557"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="557" id="sxa-IX-JN7"/>
+                                    <constraint firstAttribute="width" constant="414" id="wHM-Kq-n5O"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vs5-aj-vhB">
+                                <rect key="frame" x="0.0" y="645" width="414" height="217"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vs5-aj-vhB" firstAttribute="top" secondItem="Pyt-th-J3g" secondAttribute="bottom" id="6i2-3B-6x7"/>
+                            <constraint firstItem="5SP-ah-e3Q" firstAttribute="bottom" secondItem="vs5-aj-vhB" secondAttribute="bottom" id="PCI-p5-QvZ"/>
+                            <constraint firstItem="vs5-aj-vhB" firstAttribute="trailing" secondItem="5SP-ah-e3Q" secondAttribute="trailing" id="deO-F6-APz"/>
+                            <constraint firstItem="vs5-aj-vhB" firstAttribute="leading" secondItem="5SP-ah-e3Q" secondAttribute="leading" id="ehV-10-PYq"/>
+                            <constraint firstItem="Pyt-th-J3g" firstAttribute="top" secondItem="5SP-ah-e3Q" secondAttribute="top" id="gQ9-cm-nBi"/>
+                            <constraint firstItem="Pyt-th-J3g" firstAttribute="trailing" secondItem="5SP-ah-e3Q" secondAttribute="trailing" id="wdT-mG-2S1"/>
+                            <constraint firstItem="Pyt-th-J3g" firstAttribute="leading" secondItem="5SP-ah-e3Q" secondAttribute="leading" id="wou-3s-mdJ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5SP-ah-e3Q"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Fruid Info" id="sRc-iU-pHY"/>
+                    <connections>
+                        <outlet property="fruitDetailImage" destination="Pyt-th-J3g" id="KpG-m6-ECg"/>
+                        <outlet property="fruitDetailText" destination="vs5-aj-vhB" id="lHW-fw-KEk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V3E-u2-JZh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2111.594202898551" y="-625.44642857142856"/>
+        </scene>
+        <!--How many fruid?-->
         <scene sceneID="lx9-jb-j6Y">
             <objects>
                 <viewController id="XIT-zM-BXz" customClass="AddQuantityViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
@@ -230,37 +275,37 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="a6V-VG-psw">
-                                <rect key="frame" x="57" y="210" width="300" height="300"/>
+                                <rect key="frame" x="57" y="237" width="300" height="300"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vYD-pi-JDr">
+                                <rect key="frame" x="160" y="600" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <connections>
+                                    <action selector="stepperButtonPressed:" destination="XIT-zM-BXz" eventType="valueChanged" id="Stw-qH-nRr"/>
+                                </connections>
+                            </stepper>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWo-hi-Cuf">
-                                <rect key="frame" x="157" y="498" width="100" height="100"/>
+                                <rect key="frame" x="157" y="520" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YQe-II-Tev">
-                                <rect key="frame" x="157" y="536" width="100" height="100"/>
+                                <rect key="frame" x="57" y="150" width="300" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vYD-pi-JDr">
-                                <rect key="frame" x="160" y="614" width="94" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="1" green="0.57637232540000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <connections>
-                                    <action selector="stepperButtonPressed:" destination="XIT-zM-BXz" eventType="valueChanged" id="Stw-qH-nRr"/>
-                                </connections>
-                            </stepper>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="xg3-xE-NcP"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KRa-Up-ei7">
+                    <navigationItem key="navigationItem" title="How many fruid?" id="KRa-Up-ei7">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="Zci-h4-TvQ">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="XIT-zM-BXz" id="QZs-i7-RnX"/>

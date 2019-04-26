@@ -12,7 +12,6 @@ import RealmSwift
 class AddQuantityViewController: UIViewController {
     
     // MARK: - Declare variable(s) here
-    
     let realm = try! Realm()
     
     var fruitArray: Results<Fruit>?
@@ -30,17 +29,36 @@ class AddQuantityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .white
+        switch (tempFruitID) {
+        case 0:
+            view.backgroundColor = UIColor.flatRed()
+        case 1:
+            view.backgroundColor = UIColor.flatGreen()
+        case 2:
+            view.backgroundColor = UIColor.flatYellow()
+        case 3:
+            view.backgroundColor = UIColor.flatOrange()
+        case 4:
+            view.backgroundColor = UIColor.flatPurple()
+        case 5:
+            view.backgroundColor = UIColor.flatRedColorDark()
+        case 6:
+            view.backgroundColor = UIColor.flatForestGreen()
+        default:
+            view.backgroundColor = .white
+        }
         
         loadObj()
         
         stepperOutlet.maximumValue = 5
-        stepperOutlet.minimumValue = 1
+        stepperOutlet.minimumValue = 0
         stepperOutlet.autorepeat = false
         stepperOutlet.wraps = true
         
         quantityLabel.text = Int(stepperOutlet.minimumValue).description
+        quantityLabel.textColor = .white
         fruitName.text = fruitArray![tempFruitID].fruitName
+        fruitName.textColor = .white
         
         fruitImage.image = UIImage(named: "\(tempFruitID)")
         fruitImage.layer.cornerRadius = fruitImage.frame.size.width / 2
@@ -69,17 +87,19 @@ class AddQuantityViewController: UIViewController {
     }
     
     @IBAction func doneButtonPressed(_ sender: Any) {
-        do {
-            try realm.write {
-                let tempDataObject = User()
-                tempDataObject.stackDate = Date()
-                tempDataObject.fruitIDtoEat = tempFruitID
-                tempDataObject.quantityToEat = stepperValue
-                realm.add(tempDataObject)
-            }
-        } catch {
-            print("\(error)")
+        if stepperValue != 0 {
+            do {
+                try realm.write {
+                    let tempDataObject = User()
+                    tempDataObject.stackDate = Date()
+                    tempDataObject.fruitIDtoEat = tempFruitID
+                    tempDataObject.quantityToEat = stepperValue
+                    realm.add(tempDataObject)
+                }
+            } catch {
+                print("\(error)")
 
+            }
         }
         navigationController?.popToRootViewController(animated: true)
         self.dismiss(animated: true, completion: nil)

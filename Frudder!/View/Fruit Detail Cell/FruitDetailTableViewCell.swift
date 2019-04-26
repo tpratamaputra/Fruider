@@ -8,16 +8,19 @@
 
 import UIKit
 
+protocol infoButtonPressedDelegate {
+    func infoButtonPressed(fruit: Fruit)
+}
+
 class FruitDetailTableViewCell: UITableViewCell {
 
     @IBOutlet weak var fruitImage: UIImageView!
     @IBOutlet weak var fruitTitle: UILabel!
     @IBOutlet weak var fruitDescription: UILabel!
-    @IBOutlet weak var nutritionTitle: UILabel!
-    @IBOutlet weak var nutritionDetailVitamin: UILabel!
-    @IBOutlet weak var nutritionDetailCal: UILabel!
-    @IBOutlet weak var nutritionDetailCarb: UILabel!
-    @IBOutlet weak var nutritionDetailGluc: UILabel!
+    
+    var fruit: Fruit!
+    
+    var delegate: infoButtonPressedDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -26,8 +29,10 @@ class FruitDetailTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
     
+    @IBAction func infoButtonPressed(_ sender: Any) {
+        delegate?.infoButtonPressed(fruit: fruit)
+    }
 }

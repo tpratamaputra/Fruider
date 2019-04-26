@@ -15,7 +15,7 @@
         <tableViewCell contentMode="scaleAspectFit" selectionStyle="default" indentationWidth="10" reuseIdentifier="customCell" rowHeight="150" id="KGk-i7-Jjw" customClass="TableViewCell" customModule="Frudder_" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="341" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="341" height="149.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
@@ -26,7 +26,7 @@
                             <constraint firstAttribute="height" constant="100" id="QdD-wv-Xvb"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gov-C6-Xyv">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gov-C6-Xyv">
                         <rect key="frame" x="135" y="80" width="206" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
@@ -45,6 +45,7 @@
                     <constraint firstItem="gov-C6-Xyv" firstAttribute="leading" secondItem="P4K-5z-99h" secondAttribute="trailing" constant="25" id="AM9-DJ-oNK"/>
                     <constraint firstItem="i1w-wj-hNi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="50" id="Erl-JU-ERq"/>
                     <constraint firstItem="P4K-5z-99h" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="NSZ-xd-rUk"/>
+                    <constraint firstItem="gov-C6-Xyv" firstAttribute="top" secondItem="i1w-wj-hNi" secondAttribute="bottom" constant="9" id="ZVu-aP-Anb"/>
                     <constraint firstAttribute="bottom" secondItem="gov-C6-Xyv" secondAttribute="bottom" constant="50" id="buR-xB-Pf7"/>
                     <constraint firstAttribute="bottom" secondItem="P4K-5z-99h" secondAttribute="bottom" constant="25" id="dE1-jr-tkc"/>
                     <constraint firstItem="i1w-wj-hNi" firstAttribute="leading" secondItem="P4K-5z-99h" secondAttribute="trailing" constant="25" id="hhA-iZ-pAN"/>

@@ -25,12 +25,12 @@ class AddFruitViewController: UIViewController {
         loadObj()
     }
     
-    func loadObj () {
+    func loadObj() {
         fruitArray = realm.objects(Fruit.self)
         fruitTableView.reloadData()
     }
     
-    func saveObj (object: Fruit) {
+    func saveObj(object: Fruit) {
         do{
             try realm.write {
                 realm.add(object)
@@ -41,11 +41,22 @@ class AddFruitViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-    
-        let destinationVC = segue.destination as! AddQuantityViewController
-    
-        if let indexPath = fruitTableView.indexPathForSelectedRow {
-            destinationVC.tempFruitID = fruitArray![indexPath.row].fruitID
+        
+        if segue.identifier == "goToAddQuantityViewController" {
+        
+            let destinationVC = segue.destination as! AddQuantityViewController
+            
+            if let indexPath = fruitTableView.indexPathForSelectedRow {
+                destinationVC.tempFruitID = fruitArray![indexPath.row].fruitID
+            }
+        }
+        
+        else if segue.identifier == "goToFruitInfo" {
+            if let fruit = sender as? Fruit {
+            
+            let destinationVC = segue.destination as! FruitInfoViewController
+                destinationVC.fruitID = fruit.fruitID
+            }
         }
     }
 }
@@ -60,25 +71,25 @@ extension AddFruitViewController : UITableViewDataSource {
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fruitDetailCell", for: indexPath) as! FruitDetailTableViewCell
+        cell.fruit = fruitArray?[indexPath.row]
         cell.backgroundColor = .clear
-        cell.fruitImage.layer.cornerRadius = 17
         cell.fruitImage.clipsToBounds = true
         cell.fruitTitle.text = fruitArray?[indexPath.row].fruitName
+        cell.fruitTitle.textColor = .white
         cell.fruitDescription.text = fruitArray?[indexPath.row].funFacts
+        cell.fruitDescription.textColor = .black
         cell.fruitImage.image = UIImage(named: "\(fruitArray?[indexPath.row].fruitID ?? 1)")
-        cell.nutritionTitle.text = "Content(s)"
-        cell.nutritionDetailVitamin.text = fruitArray?[indexPath.row].vitaminContent
-        cell.nutritionDetailCal.text = "\(String(describing: fruitArray![indexPath.row].calContent.description)) Calories"
-        cell.nutritionDetailCarb.text = "\(String(describing: fruitArray![indexPath.row].carboContent.description)) Carbohydrates"
-        cell.nutritionDetailGluc.text = "\(String(describing: fruitArray![indexPath.row].glucoseContent.description)) Glucose"
+        cell.fruitImage.backgroundColor = .black
+        cell.delegate = self
         return cell
     }
+
 }
 
 //MARK : - UITableView delegate method(s)
 extension AddFruitViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "goToAddQuantity", sender: self)
+        performSegue(withIdentifier: "goToAddQuantity", sender: indexPath)
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -97,5 +108,11 @@ extension AddFruitViewController : UISearchBarDelegate {
                 searchBar.resignFirstResponder()
             }
         }
+    }
+}
+
+extension AddFruitViewController: infoButtonPressedDelegate {
+    func infoButtonPressed(fruit: Fruit) {
+        performSegue(withIdentifier: "goToFruitInfo", sender: fruit)
     }
 }

@@ -37,56 +37,77 @@ class UserViewController: UIViewController {
         /* let fruit = Fruit()
         fruit.fruitID = 0
         fruit.fruitName = "Apple"
-        fruit.funFacts = "High source of dietary fiber"
+        fruit.funFacts = "Did you know? about 2,500 known varieties of apples are grown in the United States. More than 7,500 are grown worldwide."
+        fruit.fruitDesc = "Refrigerate apple(s) in plastic bag away from strong-odored foods. Consume within 3 weeks."
+        fruit.totalFat = 0
+        fruit.sodiumContent = 80
         fruit.glucoseContent = 25
         fruit.carboContent = 34
         fruit.calContent = 130
-        fruit.vitaminContent = "Vitamin C, Vitamin A"
+        fruit.vitaminAContent = 2
+        fruit.vitaminCContent = 8
+        fruit.calciumContent = 2
+        fruit.ironContent = 2
         
         let fruit2 = Fruit()
         fruit2.fruitID = 1
         fruit2.fruitName = "Guava"
-        fruit2.funFacts = "Rich of vitamin C, high source of dietary fiber"
+        fruit2.funFacts = "Eat everything, including the seeds."
+        fruit2.fruitDesc = "Ripen guava(s) at room temperature until they give to gentle pressure. Refrigerate guava(s) immediately, and use within 4 days."
+        fruit2.totalFat = 1
+        fruit2.sodiumContent = 0
         fruit2.glucoseContent = 8
         fruit2.carboContent = 13
         fruit2.calContent = 60
-        fruit2.vitaminContent = "Vitamin C, Vitamin A"
+        fruit2.vitaminAContent = 10
+        fruit2.vitaminCContent = 340
+        fruit2.calciumContent = 2
+        fruit2.ironContent = 2
         
         let fruit3 = Fruit()
         fruit3.fruitID = 2
         fruit3.fruitName = "Banana"
-        fruit3.funFacts = "High source of dietary fiber"
-        fruit3.glucoseContent = 25
-        fruit3.carboContent = 34
-        fruit3.calContent = 130
-        fruit3.vitaminContent = "Vitamin C, Vitamin A"
+        fruit3.funFacts = "Banana trees are not trees. The banana plant is a giant herb."
+        fruit3.fruitDesc = "Store unripe banana(s) at room temperature. Store ripe banana(s) in refrigerator for up to two weeks; skin may turn black."
+        fruit3.totalFat = 0
+        fruit3.sodiumContent = 0
+        fruit3.glucoseContent = 19
+        fruit3.carboContent = 30
+        fruit3.calContent = 100
+        fruit3.vitaminAContent = 2
+        fruit3.vitaminCContent = 15
+        fruit3.calciumContent = 0
+        fruit3.ironContent = 2
         
         let fruit4 = Fruit()
         fruit4.fruitID = 3
         fruit4.fruitName = "Orange"
-        fruit4.funFacts = "Rich of vitamin C, high source of dietary fiber"
-        fruit4.glucoseContent = 8
-        fruit4.carboContent = 13
-        fruit4.calContent = 60
-        fruit4.vitaminContent = "Vitamin C, Vitamin A"
+        fruit4.funFacts = "BREAKING NEWS! The proper name for an orange seed is a pip. Would you look at that."
+        fruit4.fruitDesc = "Store orange(s) at room temperature for one to two days, refrigerate for one to two weeks."
+        fruit4.totalFat = 0
+        fruit4.sodiumContent = 0
+        fruit4.glucoseContent = 9
+        fruit4.carboContent = 19
+        fruit4.calContent = 80
+        fruit4.vitaminAContent = 2
+        fruit4.vitaminCContent = 130
+        fruit4.calciumContent = 6
+        fruit4.ironContent = 0
         
         let fruit5 = Fruit()
         fruit5.fruitID = 4
-        fruit5.fruitName = "Soursop"
-        fruit5.funFacts = "High source of dietary fiber"
-        fruit5.glucoseContent = 25
-        fruit5.carboContent = 34
-        fruit5.calContent = 130
-        fruit5.vitaminContent = "Vitamin C, Vitamin A"
-        
-        let fruit6 = Fruit()
-        fruit6.fruitID = 5
-        fruit6.fruitName = "Mangosteen"
-        fruit6.funFacts = "Rich of vitamin C, high source of dietary fiber"
-        fruit6.glucoseContent = 8
-        fruit6.carboContent = 13
-        fruit6.calContent = 60
-        fruit6.vitaminContent = "Vitamin C, Vitamin A"
+        fruit5.fruitName = "Strawberry"
+        fruit5.funFacts = "LoOkie LOOKIE! On average, there are 200 tiny seeds on every strawberry. Start counting guys!"
+        fruit5.fruitDesc = "Do not wash strawberry until they are ready to eat. Store in refrigerator for one to three days."
+        fruit5.totalFat = 0
+        fruit5.sodiumContent = 0
+        fruit5.glucoseContent = 8
+        fruit5.carboContent = 11
+        fruit5.calContent = 50
+        fruit5.vitaminAContent = 0
+        fruit5.vitaminCContent = 160
+        fruit5.calciumContent = 2
+        fruit5.ironContent = 2
         
         do{
             try realm.write {
@@ -128,20 +149,11 @@ class UserViewController: UIViewController {
             print("Error writing obj. w/ error message: \(error)")
         }
         
-        do{
-            try realm.write {
-                realm.add(fruit6)
-            }
-        } catch {
-            print("Error writing obj. w/ error message: \(error)")
-        } */
-        
-        /* let user = User()
+        let user = User()
         user.fruitIDtoEat = 0
         user.stackDate = Date()
         user.quantityToEat = 3
         saveObj(object: user) */
-        
         
         //TODO: - loadObj from local database
         loadObj()
@@ -195,12 +207,9 @@ class UserViewController: UIViewController {
         }
     }
     
+    //MARK : - Refresh everytime view did appear
     override func viewDidAppear(_ animated: Bool) {
         reminderTableView.reloadData()
-    }
-    
-    //MARK : - Prepare for segue method(s)
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
     }
     
     //MARK : - Notification func.
@@ -233,7 +242,7 @@ class UserViewController: UIViewController {
         //Making the notification request
         let uuID = UUID().uuidString
         let notificationRequest = UNNotificationRequest(identifier: uuID, content: notificationContent, trigger: notificationTrigger)
-        
+
         //Registering the notification request
         notificationCenter.add(notificationRequest) { (error) in
         }
