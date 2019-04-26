@@ -88,12 +88,60 @@ class UserViewController: UIViewController {
         fruit6.calContent = 60
         fruit6.vitaminContent = "Vitamin C, Vitamin A"
         
-        saveObj(object: fruit)
-        saveObj(object: fruit2)
-        saveObj(object: fruit3)
-        saveObj(object: fruit4)
-        saveObj(object: fruit5)
-        saveObj(object: fruit6) */
+        do{
+            try realm.write {
+                realm.add(fruit)
+            }
+        } catch {
+            print("Error writing obj. w/ error message: \(error)")
+        }
+        
+        do{
+            try realm.write {
+                realm.add(fruit2)
+            }
+        } catch {
+            print("Error writing obj. w/ error message: \(error)")
+        }
+        
+        do{
+            try realm.write {
+                realm.add(fruit3)
+            }
+        } catch {
+            print("Error writing obj. w/ error message: \(error)")
+        }
+        
+        do{
+            try realm.write {
+                realm.add(fruit4)
+            }
+        } catch {
+            print("Error writing obj. w/ error message: \(error)")
+        }
+        
+        do{
+            try realm.write {
+                realm.add(fruit5)
+            }
+        } catch {
+            print("Error writing obj. w/ error message: \(error)")
+        }
+        
+        do{
+            try realm.write {
+                realm.add(fruit6)
+            }
+        } catch {
+            print("Error writing obj. w/ error message: \(error)")
+        } */
+        
+        /* let user = User()
+        user.fruitIDtoEat = 0
+        user.stackDate = Date()
+        user.quantityToEat = 3
+        saveObj(object: user) */
+        
         
         //TODO: - loadObj from local database
         loadObj()
@@ -102,7 +150,7 @@ class UserViewController: UIViewController {
         reminderTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         
         //MARK: - userDefault line of code(s)
-        userDefault.set(Date(), forKey: "userLastAccessed")
+        //userDefault.set(Date(), forKey: "userLastAccessed")
         
         if !Calendar.current.isDateInToday(userDefault.object(forKey: "userLastAccessed") as! Date) {
             userDefault.set(Date(), forKey: "userLastAccessed")
@@ -137,7 +185,7 @@ class UserViewController: UIViewController {
         reminderTableView.reloadData()
     }
     
-    func saveObj (object: Fruit) {
+    func saveObj (object: User) {
         do{
             try realm.write {
                 realm.add(object)
@@ -145,6 +193,10 @@ class UserViewController: UIViewController {
         } catch {
             print("Error writing obj. w/ error message: \(error)")
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        reminderTableView.reloadData()
     }
     
     //MARK : - Prepare for segue method(s)
@@ -193,7 +245,7 @@ extension UserViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         tableView.separatorStyle = .singleLine
         tableView.backgroundColor = .clear
-        return fruitArray?.count ?? 1
+        return userArray?.count ?? 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -203,9 +255,9 @@ extension UserViewController: UITableViewDataSource {
         cell.layer.cornerRadius = 10
         cell.cellImage.layer.cornerRadius = 17
         cell.cellImage.clipsToBounds = true
-        cell.cellImage.image = UIImage(named: "\(fruitArray![indexPath.row].fruitID)")
-        cell.cellTitle.text = fruitArray?[indexPath.row].fruitName
-        cell.cellDescription.text = "0"
+        cell.cellImage.image = UIImage(named: "\(fruitArray?[(userArray![indexPath.row].fruitIDtoEat)].fruitID ?? 0)")
+        cell.cellTitle.text = fruitArray?[(userArray![indexPath.row].fruitIDtoEat)].fruitName
+        cell.cellDescription.text = userArray?[indexPath.row].quantityToEat.description
         return cell
     }
     
@@ -216,12 +268,12 @@ extension UserViewController: UITableViewDataSource {
     } 
     
     func isCompleted (at indexPath: IndexPath) -> UIContextualAction {
-        let checkData = fruitArray?[indexPath.row]
+        let checkData = userArray?[indexPath.row]
         let action = UIContextualAction(style: .destructive, title: "Completed") { (action, view, completion) in
             do {
                 try self.realm.write {
                     self.realm.delete(checkData!)
-                    self.fruitArray = self.fruitArray?.sorted(byKeyPath: "fruitID")
+                    self.userArray = self.userArray?.sorted(byKeyPath: "stackDate", ascending: true)
                     self.reminderTableView.reloadData()
                 }
             } catch {

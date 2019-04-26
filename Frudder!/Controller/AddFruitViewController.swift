@@ -45,7 +45,7 @@ class AddFruitViewController: UIViewController {
         let destinationVC = segue.destination as! AddQuantityViewController
     
         if let indexPath = fruitTableView.indexPathForSelectedRow {
-            destinationVC.tempFruit = fruitArray![indexPath.row].fruitID
+            destinationVC.tempFruitID = fruitArray![indexPath.row].fruitID
         }
     }
 }
@@ -68,9 +68,9 @@ extension AddFruitViewController : UITableViewDataSource {
         cell.fruitImage.image = UIImage(named: "\(fruitArray?[indexPath.row].fruitID ?? 1)")
         cell.nutritionTitle.text = "Content(s)"
         cell.nutritionDetailVitamin.text = fruitArray?[indexPath.row].vitaminContent
-        cell.nutritionDetailCal.text = fruitArray?[indexPath.row].calContent.description
-        cell.nutritionDetailCarb.text = fruitArray?[indexPath.row].carboContent.description
-        cell.nutritionDetailGluc.text = fruitArray?[indexPath.row].glucoseContent.description
+        cell.nutritionDetailCal.text = "\(String(describing: fruitArray![indexPath.row].calContent.description)) Calories"
+        cell.nutritionDetailCarb.text = "\(String(describing: fruitArray![indexPath.row].carboContent.description)) Carbohydrates"
+        cell.nutritionDetailGluc.text = "\(String(describing: fruitArray![indexPath.row].glucoseContent.description)) Glucose"
         return cell
     }
 }
@@ -80,5 +80,22 @@ extension AddFruitViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "goToAddQuantity", sender: self)
         tableView.deselectRow(at: indexPath, animated: true)
+    }
+}
+
+//MARK: - UISearchBar delegate method(s)
+extension AddFruitViewController : UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        fruitArray = fruitArray?.filter("fruitName CONTAINS[cd] %@", searchBar.text!)
+        fruitTableView.reloadData()
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchBar.text?.count == 0 {
+            loadObj()
+            DispatchQueue.main.async {
+                searchBar.resignFirstResponder()
+            }
+        }
     }
 }

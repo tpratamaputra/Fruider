@@ -1,0 +1,6 @@
+framework module Pods_Frudder_ {
+  umbrella header "Pods-Frudder!-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class User: Object {
-    @objc dynamic var toEatID: Int = Int()
+    @objc dynamic var stackDate: Date?
     @objc dynamic var fruitIDtoEat: Int = Int()
     @objc dynamic var quantityToEat: Int = Int()
 }

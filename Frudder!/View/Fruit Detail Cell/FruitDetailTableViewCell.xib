@@ -27,7 +27,7 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Utl-6N-Xi3">
-                        <rect key="frame" x="140" y="47" width="258" height="21"/>
+                        <rect key="frame" x="140" y="39" width="258" height="21"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -62,37 +62,38 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5m-lx-iQ6">
-                        <rect key="frame" x="140" y="76" width="258" height="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r5m-lx-iQ6">
+                        <rect key="frame" x="140" y="68" width="258" height="48"/>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="Utl-6N-Xi3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="47" id="1Ck-3b-nhJ"/>
                     <constraint firstItem="wQO-Mw-HWU" firstAttribute="top" secondItem="5e4-3k-GxZ" secondAttribute="bottom" constant="7.5" id="4jR-aA-gnE"/>
                     <constraint firstItem="ZJS-jO-SaJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="4mM-B0-dj6"/>
-                    <constraint firstAttribute="trailing" secondItem="r5m-lx-iQ6" secondAttribute="trailing" id="6ea-PA-Yuk"/>
+                    <constraint firstItem="Utl-6N-Xi3" firstAttribute="leading" secondItem="ZJS-jO-SaJ" secondAttribute="trailing" constant="20" id="5E8-rH-oWh"/>
                     <constraint firstItem="Ehq-l2-I6E" firstAttribute="top" secondItem="ZJS-jO-SaJ" secondAttribute="bottom" constant="16" id="7vd-se-f4Q"/>
                     <constraint firstItem="ahw-6e-U6z" firstAttribute="top" secondItem="Ehq-l2-I6E" secondAttribute="bottom" constant="11" id="84C-G6-Tow"/>
                     <constraint firstAttribute="trailing" secondItem="d28-fg-Ekr" secondAttribute="trailing" id="8HL-dB-IG4"/>
+                    <constraint firstAttribute="trailing" secondItem="Utl-6N-Xi3" secondAttribute="trailing" id="8LC-Ho-QmD"/>
+                    <constraint firstItem="r5m-lx-iQ6" firstAttribute="top" secondItem="Utl-6N-Xi3" secondAttribute="bottom" constant="8" id="A2a-dr-6cY"/>
+                    <constraint firstItem="r5m-lx-iQ6" firstAttribute="leading" secondItem="ZJS-jO-SaJ" secondAttribute="trailing" constant="20" id="GdV-5G-wTF"/>
                     <constraint firstItem="5e4-3k-GxZ" firstAttribute="top" secondItem="d28-fg-Ekr" secondAttribute="bottom" constant="7.5" id="Hud-Yj-UaA"/>
                     <constraint firstAttribute="trailing" secondItem="wQO-Mw-HWU" secondAttribute="trailing" id="P67-d4-Cx6"/>
                     <constraint firstAttribute="bottom" secondItem="wQO-Mw-HWU" secondAttribute="bottom" constant="19.5" id="PV0-aA-CEC"/>
-                    <constraint firstItem="Utl-6N-Xi3" firstAttribute="leading" secondItem="ZJS-jO-SaJ" secondAttribute="trailing" constant="20" id="THf-DR-ial"/>
+                    <constraint firstItem="Ehq-l2-I6E" firstAttribute="top" secondItem="r5m-lx-iQ6" secondAttribute="bottom" constant="20" id="Uiu-2a-D8t"/>
                     <constraint firstItem="ZJS-jO-SaJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="a9U-lb-Hjv"/>
+                    <constraint firstItem="Utl-6N-Xi3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="39" id="cWw-m5-gkd"/>
                     <constraint firstAttribute="trailing" secondItem="Ehq-l2-I6E" secondAttribute="trailing" id="cer-cM-YHq"/>
                     <constraint firstAttribute="trailing" secondItem="5e4-3k-GxZ" secondAttribute="trailing" id="dDk-YD-mhY"/>
                     <constraint firstAttribute="trailing" secondItem="ahw-6e-U6z" secondAttribute="trailing" id="h6p-Cq-fh9"/>
                     <constraint firstItem="wQO-Mw-HWU" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="kex-3d-6HN"/>
                     <constraint firstItem="d28-fg-Ekr" firstAttribute="top" secondItem="ahw-6e-U6z" secondAttribute="bottom" constant="7" id="kxB-kD-hMF"/>
                     <constraint firstItem="5e4-3k-GxZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="oz6-rS-8Zx"/>
-                    <constraint firstItem="r5m-lx-iQ6" firstAttribute="leading" secondItem="ZJS-jO-SaJ" secondAttribute="trailing" constant="20" id="qKo-Ga-Swp"/>
-                    <constraint firstItem="r5m-lx-iQ6" firstAttribute="bottom" secondItem="ZJS-jO-SaJ" secondAttribute="bottom" constant="-26" id="quY-rF-wMf"/>
                     <constraint firstItem="ahw-6e-U6z" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="s2q-RY-7Mf"/>
                     <constraint firstItem="Ehq-l2-I6E" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="sXZ-Ya-wHD"/>
-                    <constraint firstAttribute="trailing" secondItem="Utl-6N-Xi3" secondAttribute="trailing" id="uTC-21-xZp"/>
+                    <constraint firstAttribute="trailing" secondItem="r5m-lx-iQ6" secondAttribute="trailing" id="uVJ-8u-DML"/>
                     <constraint firstItem="d28-fg-Ekr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="yzo-SR-TIa"/>
                 </constraints>
             </tableViewCellContentView>
