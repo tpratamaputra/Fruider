@@ -168,7 +168,7 @@ class UserViewController: UIViewController {
         reminderTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
         
         //MARK: - userDefault line of code(s)
-        userDefault.set(Date(), forKey: "userLastAccessed")
+//        userDefault.set(Date(), forKey: "userLastAccessed")
         
         if !Calendar.current.isDateInToday(userDefault.object(forKey: "userLastAccessed") as! Date) {
             userDefault.set(Date(), forKey: "userLastAccessed")

@@ -22,6 +22,8 @@
 		60D3978022714299002858E6 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D3977E22714299002858E6 /* TableViewCell.xib */; };
 		60DDBCD52271AC50001C362F /* FruitDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDBCD32271AC50001C362F /* FruitDetailTableViewCell.swift */; };
 		60DDBCD62271AC50001C362F /* FruitDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60DDBCD42271AC50001C362F /* FruitDetailTableViewCell.xib */; };
+		60E83CAD2273DF5500BD818C /* UserNotifTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E83CAC2273DF5500BD818C /* UserNotifTableViewController.swift */; };
+		60E83CAF2273E86B00BD818C /* NotifItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E83CAE2273E86B00BD818C /* NotifItem.swift */; };
 		C281FFD8A27A5F5C18C6E027 /* Pods_Frudder_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C845DF0945E4BAD016223A /* Pods_Frudder_.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,6 +46,8 @@
 		60D3977E22714299002858E6 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		60DDBCD32271AC50001C362F /* FruitDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitDetailTableViewCell.swift; sourceTree = "<group>"; };
 		60DDBCD42271AC50001C362F /* FruitDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitDetailTableViewCell.xib; sourceTree = "<group>"; };
+		60E83CAC2273DF5500BD818C /* UserNotifTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotifTableViewController.swift; sourceTree = "<group>"; };
+		60E83CAE2273E86B00BD818C /* NotifItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifItem.swift; sourceTree = "<group>"; };
 		74F36F4714866C7CEE7780DF /* Pods-Frudder!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frudder!.release.xcconfig"; path = "Target Support Files/Pods-Frudder!/Pods-Frudder!.release.xcconfig"; sourceTree = "<group>"; };
 		FF828C1581B6821375BCDCA3 /* Pods-Frudder!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frudder!.debug.xcconfig"; path = "Target Support Files/Pods-Frudder!/Pods-Frudder!.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -104,6 +108,7 @@
 			children = (
 				602D6841226EB2380090BF02 /* Fruit.swift */,
 				60D39775227131F0002858E6 /* User.swift */,
+				60E83CAE2273E86B00BD818C /* NotifItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -127,6 +132,7 @@
 				602D683B226EA93F0090BF02 /* AddQuantityViewController.swift */,
 				6075E4622273192E00BC26EC /* FruitInfoViewController.swift */,
 				60D3977A22713AE2002858E6 /* ConfigurationsTableViewController.swift */,
+				60E83CAC2273DF5500BD818C /* UserNotifTableViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -295,8 +301,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				602D6842226EB2380090BF02 /* Fruit.swift in Sources */,
+				60E83CAF2273E86B00BD818C /* NotifItem.swift in Sources */,
 				6075E4632273192E00BC26EC /* FruitInfoViewController.swift in Sources */,
 				60D3977F22714299002858E6 /* TableViewCell.swift in Sources */,
+				60E83CAD2273DF5500BD818C /* UserNotifTableViewController.swift in Sources */,
 				60D3977B22713AE2002858E6 /* ConfigurationsTableViewController.swift in Sources */,
 				602D6826226EA12F0090BF02 /* AppDelegate.swift in Sources */,
 				60D39776227131F0002858E6 /* User.swift in Sources */,

@@ -62,7 +62,7 @@ class AddQuantityViewController: UIViewController {
         fruitName.textColor = .white
         
         fruitImage.image = UIImage(named: "\(tempFruitID)")
-        fruitImage.layer.cornerRadius = fruitImage.frame.size.width / 2
+        fruitImage.layer.cornerRadius = 17
         fruitImage.clipsToBounds = true
     }
     
