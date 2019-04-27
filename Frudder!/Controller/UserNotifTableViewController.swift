@@ -73,8 +73,8 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
         
         //Creating the notification content
         let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "Have you eat your fruit today?"
-        notificationContent.body = "Check your fruid stack over here!"
+        notificationContent.title = "Have you eat any fruid today?"
+        notificationContent.body = "A little reminder to eat your favorite healthy fruid."
         
         //Creating trigger for the notification
         //TODO: - Change the timeTrigger to user preferences interval

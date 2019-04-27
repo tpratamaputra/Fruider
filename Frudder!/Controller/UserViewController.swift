@@ -82,6 +82,10 @@ class UserViewController: UIViewController {
         performSegue(withIdentifier: "goToAddFruit", sender: self)
     }
     
+    @IBAction func settingsButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToReminder", sender: self)
+    }
+    
     @IBAction func configButtonPressed(_ sender: Any) {
         performSegue(withIdentifier: "goToConfigurations", sender: self)
     }
@@ -306,7 +310,7 @@ extension UserViewController: UITableViewDataSource {
             
             completion(true)
         }
-        action.backgroundColor = #colorLiteral(red: 0, green: 0.8883596063, blue: 0, alpha: 1)
+        action.backgroundColor = UIColor.flatMint()
         return action
     }
     
@@ -330,7 +334,7 @@ extension UserViewController: UITableViewDataSource {
             
             completion(true)
         }
-        action.backgroundColor = #colorLiteral(red: 0.7779501081, green: 0, blue: 0, alpha: 1)
+        action.backgroundColor = UIColor.flatRed()
         return action
     }
     

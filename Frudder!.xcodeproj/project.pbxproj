@@ -21,9 +21,9 @@
 		60D3977F22714299002858E6 /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60D3977D22714299002858E6 /* TableViewCell.swift */; };
 		60D3978022714299002858E6 /* TableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60D3977E22714299002858E6 /* TableViewCell.xib */; };
 		60DDBCD52271AC50001C362F /* FruitDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60DDBCD32271AC50001C362F /* FruitDetailTableViewCell.swift */; };
-		60DDBCD62271AC50001C362F /* FruitDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60DDBCD42271AC50001C362F /* FruitDetailTableViewCell.xib */; };
 		60E83CAD2273DF5500BD818C /* UserNotifTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E83CAC2273DF5500BD818C /* UserNotifTableViewController.swift */; };
 		60E83CAF2273E86B00BD818C /* NotifItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60E83CAE2273E86B00BD818C /* NotifItem.swift */; };
+		60E83CD3227495D900BD818C /* FruitDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 60E83CD2227495D900BD818C /* FruitDetailTableViewCell.xib */; };
 		C281FFD8A27A5F5C18C6E027 /* Pods_Frudder_.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04C845DF0945E4BAD016223A /* Pods_Frudder_.framework */; };
 /* End PBXBuildFile section */
 
@@ -45,9 +45,9 @@
 		60D3977D22714299002858E6 /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		60D3977E22714299002858E6 /* TableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableViewCell.xib; sourceTree = "<group>"; };
 		60DDBCD32271AC50001C362F /* FruitDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FruitDetailTableViewCell.swift; sourceTree = "<group>"; };
-		60DDBCD42271AC50001C362F /* FruitDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FruitDetailTableViewCell.xib; sourceTree = "<group>"; };
 		60E83CAC2273DF5500BD818C /* UserNotifTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNotifTableViewController.swift; sourceTree = "<group>"; };
 		60E83CAE2273E86B00BD818C /* NotifItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotifItem.swift; sourceTree = "<group>"; };
+		60E83CD2227495D900BD818C /* FruitDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FruitDetailTableViewCell.xib; sourceTree = "<group>"; };
 		74F36F4714866C7CEE7780DF /* Pods-Frudder!.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frudder!.release.xcconfig"; path = "Target Support Files/Pods-Frudder!/Pods-Frudder!.release.xcconfig"; sourceTree = "<group>"; };
 		FF828C1581B6821375BCDCA3 /* Pods-Frudder!.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Frudder!.debug.xcconfig"; path = "Target Support Files/Pods-Frudder!/Pods-Frudder!.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -157,8 +157,8 @@
 		60DDBCD22271AAD9001C362F /* Fruit Detail Cell */ = {
 			isa = PBXGroup;
 			children = (
+				60E83CD2227495D900BD818C /* FruitDetailTableViewCell.xib */,
 				60DDBCD32271AC50001C362F /* FruitDetailTableViewCell.swift */,
-				60DDBCD42271AC50001C362F /* FruitDetailTableViewCell.xib */,
 			);
 			path = "Fruit Detail Cell";
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 				60D3977922713809002858E6 /* LaunchScreen.storyboard in Resources */,
 				60D3978022714299002858E6 /* TableViewCell.xib in Resources */,
 				602D682D226EA12F0090BF02 /* Assets.xcassets in Resources */,
-				60DDBCD62271AC50001C362F /* FruitDetailTableViewCell.xib in Resources */,
+				60E83CD3227495D900BD818C /* FruitDetailTableViewCell.xib in Resources */,
 				602D682B226EA12F0090BF02 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

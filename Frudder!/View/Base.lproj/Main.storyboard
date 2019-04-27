@@ -136,6 +136,11 @@
                     </view>
                     <navigationItem key="navigationItem" title="Fruider" id="MVN-xu-hX0">
                         <barButtonItem key="backBarButtonItem" title="Back" id="hvf-Va-p3a"/>
+                        <barButtonItem key="rightBarButtonItem" title="Reminder" style="done" id="gda-jT-Nn0">
+                            <connections>
+                                <action selector="settingsButtonPressed:" destination="trh-2D-IkN" id="g6J-6b-e6j"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonFrame" destination="E1l-wk-XrH" id="0pO-kw-btf"/>
@@ -145,6 +150,7 @@
                         <outlet property="welcomeUserText" destination="2rj-TZ-D38" id="1bU-j8-Ili"/>
                         <segue destination="lRV-sQ-C4G" kind="show" identifier="goToAddFruit" id="2cW-uF-Asz"/>
                         <segue destination="R7S-RD-BJz" kind="show" identifier="goToConfigurations" id="bla-fw-cJW"/>
+                        <segue destination="0it-4f-Da0" kind="show" identifier="goToReminder" id="Yno-xK-Kv5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXA-OO-YzY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -290,7 +296,7 @@
                                     <outlet property="delegate" destination="lRV-sQ-C4G" id="VCL-BM-U1r"/>
                                 </connections>
                             </tableView>
-                            <searchBar contentMode="redraw" fixedFrame="YES" placeholder="Search for fruid here!" translatesAutoresizingMaskIntoConstraints="NO" id="k5e-kW-jdP">
+                            <searchBar contentMode="redraw" fixedFrame="YES" text="" placeholder="Search for fruid here" translatesAutoresizingMaskIntoConstraints="NO" id="k5e-kW-jdP">
                                 <rect key="frame" x="0.0" y="87" width="414" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -451,7 +457,7 @@
             </objects>
             <point key="canvasLocation" x="1714" y="-762"/>
         </scene>
-        <!--How many fruid?-->
+        <!--Adding da fruid!-->
         <scene sceneID="lx9-jb-j6Y">
             <objects>
                 <viewController id="XIT-zM-BXz" customClass="AddQuantityViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
@@ -506,7 +512,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xg3-xE-NcP"/>
                     </view>
-                    <navigationItem key="navigationItem" title="How many fruid?" id="KRa-Up-ei7">
+                    <navigationItem key="navigationItem" title="Adding da fruid!" id="KRa-Up-ei7">
                         <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="Zci-h4-TvQ">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="XIT-zM-BXz" id="QZs-i7-RnX"/>
@@ -549,4 +555,7 @@
         <image name="pineapple" width="900" height="740"/>
         <image name="strawberry" width="800" height="449"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Yno-xK-Kv5"/>
+    </inferredMetricsTieBreakers>
 </document>
