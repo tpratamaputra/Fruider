@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import UserNotifications
+import SVProgressHUD
 
-class UserNotifTableViewController: UITableViewController {
+class UserNotifTableViewController: UITableViewController, UINavigationControllerDelegate {
     
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("UserNotification.plist")
     
@@ -16,14 +18,23 @@ class UserNotifTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         loadPlist()
         tableView.tableFooterView = UIView()
+        if notifArray.count == 0 {
+            generateDummyConfigurations()
+        }
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
         
+        for i in 0...notifArray.count - 1 {
+            if notifArray[i].isCheck == true {
+                notificationAlert(hour: (notifArray[i].timeInterval))
+            }
+        }
         
+        SVProgressHUD.showSuccess(withStatus: "Success")
+        SVProgressHUD.dismiss(withDelay: 0.75)
     }
     
     func loadPlist () {
@@ -46,6 +57,63 @@ class UserNotifTableViewController: UITableViewController {
         } catch {
             print("Error encoding item w/ error: \(error)")
         }
+    }
+    
+    func notificationAlert(hour: Int) {
+        //Notify the notification center
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (isSuccess, error) in
+            if isSuccess == true {
+                print("Success")
+            }
+            else {
+                print(error!)
+            }
+        }
+        
+        //Creating the notification content
+        let notificationContent = UNMutableNotificationContent()
+        notificationContent.title = "Have you eat your fruit today?"
+        notificationContent.body = "Check your fruid stack over here!"
+        
+        //Creating trigger for the notification
+        //TODO: - Change the timeTrigger to user preferences interval
+        let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(hour) * 3600, repeats: false)
+        
+        //Making the notification request
+        let uuID = UUID().uuidString
+        let notificationRequest = UNNotificationRequest(identifier: uuID, content: notificationContent, trigger: timeTrigger)
+        
+        //Registering the notification request
+        notificationCenter.add(notificationRequest) { (error) in
+            print("\(String(describing: error))")
+        }
+    }
+    
+    func generateDummyConfigurations () {
+     var arrayOfLOV: [String] = ["Every 3 hours", "Every 5 hours", "Every 7 hours"]
+     
+     let notifItem1 = NotifItem()
+     let notifItem2 = NotifItem()
+     let notifItem3 = NotifItem()
+     
+     notifItem1.name = arrayOfLOV[0]
+     notifItem1.isCheck = false
+     notifItem1.timeInterval = 3
+     
+     notifItem2.name = arrayOfLOV[1]
+     notifItem2.isCheck = false
+     notifItem2.timeInterval = 5
+     
+     notifItem3.name = arrayOfLOV[2]
+     notifItem3.isCheck = false
+     notifItem3.timeInterval = 7
+     
+     notifArray.append(notifItem1)
+     notifArray.append(notifItem2)
+     notifArray.append(notifItem3)
+     
+     writeToPlist(param: notifArray)
     }
     
     // MARK: - Table view data source

@@ -84,9 +84,8 @@
                                     <action selector="configButtonPressed:" destination="trh-2D-IkN" eventType="touchUpInside" id="zqb-Uy-fII"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-wk-XrH">
-                                <rect key="frame" x="344" y="819" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="E1l-wk-XrH">
+                                <rect key="frame" x="336" y="814" width="50" height="50"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ReG-yO-Qjv">
                                         <rect key="frame" x="10" y="-10" width="30" height="65"/>
@@ -104,14 +103,20 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="D4O-uM-5cK"/>
+                                    <constraint firstAttribute="height" constant="50" id="DbC-g7-vzw"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="2rj-TZ-D38" firstAttribute="top" secondItem="wLb-gr-RWa" secondAttribute="bottom" constant="52" id="27r-8S-8Tf"/>
                             <constraint firstItem="4rH-6N-PNL" firstAttribute="trailing" secondItem="xY0-Fd-eLF" secondAttribute="trailing" id="CTZ-oo-9jb"/>
+                            <constraint firstItem="xY0-Fd-eLF" firstAttribute="trailing" secondItem="E1l-wk-XrH" secondAttribute="trailing" constant="28" id="Opw-GM-rCe"/>
                             <constraint firstItem="4rH-6N-PNL" firstAttribute="top" secondItem="2rj-TZ-D38" secondAttribute="bottom" constant="19" id="QcQ-aj-CC5"/>
                             <constraint firstItem="wLb-gr-RWa" firstAttribute="top" secondItem="xY0-Fd-eLF" secondAttribute="top" constant="12" id="RpO-sf-UrM"/>
+                            <constraint firstAttribute="bottom" secondItem="E1l-wk-XrH" secondAttribute="bottom" constant="32" id="Sl9-SG-1oN"/>
                             <constraint firstItem="xY0-Fd-eLF" firstAttribute="trailing" secondItem="wLb-gr-RWa" secondAttribute="trailing" constant="8" id="YyD-7r-rBx"/>
                             <constraint firstItem="4rH-6N-PNL" firstAttribute="top" secondItem="lny-Rd-0pd" secondAttribute="bottom" id="ZiK-w4-xL3"/>
                             <constraint firstItem="TLh-ws-0in" firstAttribute="leading" secondItem="xY0-Fd-eLF" secondAttribute="leading" id="bdC-JK-Shs"/>
@@ -185,9 +190,7 @@
                             <outlet property="delegate" destination="R7S-RD-BJz" id="XOy-UB-mSP"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Settings" id="Gyy-Fl-3BO">
-                        <barButtonItem key="backBarButtonItem" title="Settings" id="Y7R-XG-eOp"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Settings" id="Gyy-Fl-3BO"/>
                     <connections>
                         <segue destination="0it-4f-Da0" kind="show" identifier="goToUserNotifSetting" id="gZU-aG-1S1"/>
                     </connections>
