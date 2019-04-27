@@ -10,66 +10,61 @@ import UIKit
 
 class UserNotifTableViewController: UITableViewController {
     
-    let encoder = PropertyListEncoder()
-    
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("UserNotification.plist")
     
-    var arrayOfLOV: [String] = ["Every 3 hours", "Every 5 hours", "Every 7 hours"]
-    
-    var notifItem1 = NotifItem()
-    var notifItem2 = NotifItem()
-    var notifItem3 = NotifItem()
     var notifArray = [NotifItem]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /* notifItem1.name = arrayOfLOV[0]
-        notifItem1.isCheck = false
-        notifItem1.timeInterval = 3
+        loadPlist()
+        tableView.tableFooterView = UIView()
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
         
-        notifItem2.name = arrayOfLOV[1]
-        notifItem2.isCheck = false
-        notifItem2.timeInterval = 5
-        
-        notifItem3.name = arrayOfLOV[2]
-        notifItem3.isCheck = false
-        notifItem3.timeInterval = 7
-        
-        notifArray.append(notifItem1)
-        notifArray.append(notifItem2)
-        notifArray.append(notifItem3)
-        
-        writeToPlist(param: notifArray) */
         
     }
     
-    /* func writeToPlist(param: [NotifItem]) {
+    func loadPlist () {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do{
+                notifArray = try decoder.decode([NotifItem].self, from: data)
+            } catch {
+                print("Error decoding plist w/ error message: \(error)")
+            }
+        }
+    }
+    
+    func writeToPlist(param: [NotifItem]) {
+       let encoder = PropertyListEncoder()
+     
         do{
             let data = try encoder.encode(param)
             try data.write(to: dataFilePath!)
         } catch {
             print("Error encoding item w/ error: \(error)")
         }
-    } */
-
-    // MARK: - Table view data source
+    }
     
+    // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "prototypeCell", for: indexPath)
-        cell.textLabel?.text = arrayOfLOV[indexPath.row]
+        cell.textLabel?.text = notifArray[indexPath.row].name
+        cell.accessoryType = notifArray[indexPath.row].isCheck ? .checkmark : .none
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        notifArray[indexPath.row].isCheck = !notifArray[indexPath.row].isCheck
+        writeToPlist(param: notifArray)
         tableView.reloadData()
-        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return arrayOfLOV.count
+        return notifArray.count
     }
 
 }

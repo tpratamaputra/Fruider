@@ -18,20 +18,29 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fruitHome" translatesAutoresizingMaskIntoConstraints="NO" id="lny-Rd-0pd">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fruitHome" translatesAutoresizingMaskIntoConstraints="NO" id="lny-Rd-0pd">
                                 <rect key="frame" x="0.0" y="88" width="414" height="153"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="414" id="81U-0e-Z0T"/>
+                                    <constraint firstAttribute="height" constant="153" id="PbR-4V-JDG"/>
+                                </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rj-TZ-D38" userLabel="Welcome User Label">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TLh-ws-0in">
+                                <rect key="frame" x="0.0" y="88" width="414" height="153"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="153" id="0dV-Sd-SKv"/>
+                                    <constraint firstAttribute="width" constant="414" id="ASq-ZG-w7U"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2rj-TZ-D38" userLabel="Welcome User Label">
                                 <rect key="frame" x="14" y="181" width="400" height="41"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4rH-6N-PNL">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4rH-6N-PNL">
                                 <rect key="frame" x="0.0" y="241" width="414" height="655"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="prototypeCell" textLabel="1sr-bk-cwk" detailTextLabel="ITe-oz-qeQ" imageView="WWt-N9-g1c" rowHeight="61" style="IBUITableViewCellStyleSubtitle" id="TK7-uC-c4b">
@@ -68,9 +77,8 @@
                                     <outlet property="delegate" destination="trh-2D-IkN" id="jWW-nD-Yh7"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLb-gr-RWa">
-                                <rect key="frame" x="378" y="102" width="29" height="29"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wLb-gr-RWa">
+                                <rect key="frame" x="377" y="100" width="29" height="29"/>
                                 <state key="normal" image="AppIcon29x29"/>
                                 <connections>
                                     <action selector="configButtonPressed:" destination="trh-2D-IkN" eventType="touchUpInside" id="zqb-Uy-fII"/>
@@ -99,6 +107,26 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2rj-TZ-D38" firstAttribute="top" secondItem="wLb-gr-RWa" secondAttribute="bottom" constant="52" id="27r-8S-8Tf"/>
+                            <constraint firstItem="4rH-6N-PNL" firstAttribute="trailing" secondItem="xY0-Fd-eLF" secondAttribute="trailing" id="CTZ-oo-9jb"/>
+                            <constraint firstItem="4rH-6N-PNL" firstAttribute="top" secondItem="2rj-TZ-D38" secondAttribute="bottom" constant="19" id="QcQ-aj-CC5"/>
+                            <constraint firstItem="wLb-gr-RWa" firstAttribute="top" secondItem="xY0-Fd-eLF" secondAttribute="top" constant="12" id="RpO-sf-UrM"/>
+                            <constraint firstItem="xY0-Fd-eLF" firstAttribute="trailing" secondItem="wLb-gr-RWa" secondAttribute="trailing" constant="8" id="YyD-7r-rBx"/>
+                            <constraint firstItem="4rH-6N-PNL" firstAttribute="top" secondItem="lny-Rd-0pd" secondAttribute="bottom" id="ZiK-w4-xL3"/>
+                            <constraint firstItem="TLh-ws-0in" firstAttribute="leading" secondItem="xY0-Fd-eLF" secondAttribute="leading" id="bdC-JK-Shs"/>
+                            <constraint firstItem="TLh-ws-0in" firstAttribute="top" secondItem="xY0-Fd-eLF" secondAttribute="top" id="bus-PP-2og"/>
+                            <constraint firstItem="lny-Rd-0pd" firstAttribute="trailing" secondItem="xY0-Fd-eLF" secondAttribute="trailing" id="dZz-6u-HfQ"/>
+                            <constraint firstItem="2rj-TZ-D38" firstAttribute="leading" secondItem="xY0-Fd-eLF" secondAttribute="leading" constant="14" id="jMq-Jh-W6f"/>
+                            <constraint firstAttribute="bottom" secondItem="4rH-6N-PNL" secondAttribute="bottom" id="kxv-hy-ZiU"/>
+                            <constraint firstItem="TLh-ws-0in" firstAttribute="trailing" secondItem="xY0-Fd-eLF" secondAttribute="trailing" id="m6O-uW-rDV"/>
+                            <constraint firstItem="4rH-6N-PNL" firstAttribute="top" secondItem="TLh-ws-0in" secondAttribute="bottom" id="oyh-gj-XMg"/>
+                            <constraint firstItem="4rH-6N-PNL" firstAttribute="top" secondItem="lny-Rd-0pd" secondAttribute="bottom" id="q3i-Bg-qHp"/>
+                            <constraint firstItem="4rH-6N-PNL" firstAttribute="leading" secondItem="xY0-Fd-eLF" secondAttribute="leading" id="q4u-sT-VHK"/>
+                            <constraint firstItem="lny-Rd-0pd" firstAttribute="top" secondItem="xY0-Fd-eLF" secondAttribute="top" id="vvg-O8-P8O"/>
+                            <constraint firstItem="lny-Rd-0pd" firstAttribute="leading" secondItem="xY0-Fd-eLF" secondAttribute="leading" id="yQd-dJ-USH"/>
+                            <constraint firstItem="2rj-TZ-D38" firstAttribute="trailing" secondItem="xY0-Fd-eLF" secondAttribute="trailing" id="zFt-u8-MZA"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="xY0-Fd-eLF"/>
                     </view>
                     <navigationItem key="navigationItem" title="Fruider" id="MVN-xu-hX0">
@@ -107,6 +135,7 @@
                     <connections>
                         <outlet property="buttonFrame" destination="E1l-wk-XrH" id="0pO-kw-btf"/>
                         <outlet property="buttonOutlet" destination="ReG-yO-Qjv" id="oHX-WH-yaf"/>
+                        <outlet property="darkenView" destination="TLh-ws-0in" id="W9y-V2-oRC"/>
                         <outlet property="reminderTableView" destination="4rH-6N-PNL" id="97q-kf-uRM"/>
                         <outlet property="welcomeUserText" destination="2rj-TZ-D38" id="1bU-j8-Ili"/>
                         <segue destination="lRV-sQ-C4G" kind="show" identifier="goToAddFruit" id="2cW-uF-Asz"/>
@@ -115,9 +144,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bXA-OO-YzY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="149" y="-50"/>
+            <point key="canvasLocation" x="147.82608695652175" y="-50.223214285714285"/>
         </scene>
-        <!--Configurations Table View Controller-->
+        <!--Settings-->
         <scene sceneID="G1L-gP-Hik">
             <objects>
                 <tableViewController id="R7S-RD-BJz" customClass="ConfigurationsTableViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,9 +163,9 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7z5-dl-QxG">
-                                            <rect key="frame" x="20" y="12" width="33.5" height="20.5"/>
+                                            <rect key="frame" x="20" y="12" width="36.5" height="20.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -156,6 +185,9 @@
                             <outlet property="delegate" destination="R7S-RD-BJz" id="XOy-UB-mSP"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="Gyy-Fl-3BO">
+                        <barButtonItem key="backBarButtonItem" title="Settings" id="Y7R-XG-eOp"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="0it-4f-Da0" kind="show" identifier="goToUserNotifSetting" id="gZU-aG-1S1"/>
                     </connections>
@@ -164,7 +196,7 @@
             </objects>
             <point key="canvasLocation" x="148" y="707"/>
         </scene>
-        <!--User Notif Table View Controller-->
+        <!--Notifications-->
         <scene sceneID="h16-DV-wwE">
             <objects>
                 <tableViewController id="0it-4f-Da0" customClass="UserNotifTableViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
@@ -196,6 +228,13 @@
                             <outlet property="delegate" destination="0it-4f-Da0" id="p2F-F2-xFv"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Notifications" id="vnk-Vv-CAr">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="lox-qX-f9a">
+                            <connections>
+                                <action selector="saveButtonPressed:" destination="0it-4f-Da0" id="Jqz-JU-Hrf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="79x-ox-nxC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -465,7 +504,7 @@
                         <viewLayoutGuide key="safeArea" id="xg3-xE-NcP"/>
                     </view>
                     <navigationItem key="navigationItem" title="How many fruid?" id="KRa-Up-ei7">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="Zci-h4-TvQ">
+                        <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="Zci-h4-TvQ">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="XIT-zM-BXz" id="QZs-i7-RnX"/>
                             </connections>

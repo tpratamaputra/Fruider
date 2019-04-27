@@ -16,6 +16,8 @@ class AddFruitViewController: UIViewController {
     
     var fruitArray : Results<Fruit>?
     
+    var fruit2 : Fruit!
+    
     @IBOutlet weak var fruitTableView: UITableView!
 
     override func viewDidLoad() {
@@ -24,12 +26,10 @@ class AddFruitViewController: UIViewController {
         fruitTableView.register(UINib(nibName: "FruitDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "fruitDetailCell")
         loadObj()
     }
-    
     func loadObj() {
         fruitArray = realm.objects(Fruit.self)
         fruitTableView.reloadData()
     }
-    
     func saveObj(object: Fruit) {
         do{
             try realm.write {
@@ -43,11 +43,9 @@ class AddFruitViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if segue.identifier == "goToAddQuantity" {
-        
-            let destinationVC = segue.destination as! AddQuantityViewController
-            
             if let indexPath = fruitTableView.indexPathForSelectedRow {
-                destinationVC.tempFruitID = indexPath.row
+                let destinationVC = segue.destination as! AddQuantityViewController
+                destinationVC.fruitRcv = fruitArray![indexPath.row]
             }
         }
         
@@ -87,7 +85,6 @@ extension AddFruitViewController : UITableViewDataSource {
     }
 
 }
-
 //MARK : - UITableView delegate method(s)
 extension AddFruitViewController : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -95,7 +92,6 @@ extension AddFruitViewController : UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
-
 //MARK: - UISearchBar delegate method(s)
 extension AddFruitViewController : UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -112,7 +108,7 @@ extension AddFruitViewController : UISearchBarDelegate {
         }
     }
 }
-
+//buttonPressedDelegate method(s)
 extension AddFruitViewController: infoButtonPressedDelegate {
     func infoButtonPressed(fruit: Fruit) {
         performSegue(withIdentifier: "goToFruitInfo", sender: fruit)

@@ -34,8 +34,6 @@ class FruitInfoViewController: UIViewController {
     @IBOutlet weak var ironContent: UILabel!
     @IBOutlet weak var darkenView: UIView!
     
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         darkenView.backgroundColor = .black

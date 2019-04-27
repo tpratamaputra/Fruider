@@ -18,8 +18,7 @@ class AddQuantityViewController: UIViewController {
     var fruitArray: Results<Fruit>?
     var userArray: Results<User>?
     
-    var numberLOV : [Int] = [1, 2, 3, 4, 5]
-    var tempFruitID: Int = Int()
+    var fruitRcv = Fruit()
     var stepperValue: Int = Int()
     
     @IBOutlet weak var quantityLabel: UILabel!
@@ -30,9 +29,9 @@ class AddQuantityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        switch (tempFruitID) {
+        switch (fruitRcv.fruitID) {
         case 0:
-            view.backgroundColor = UIColor.flatRed()
+            view.backgroundColor = UIColor.flatRedColorDark()
         case 1:
             view.backgroundColor = UIColor.flatGreen()
         case 2:
@@ -40,11 +39,7 @@ class AddQuantityViewController: UIViewController {
         case 3:
             view.backgroundColor = UIColor.flatOrange()
         case 4:
-            view.backgroundColor = UIColor.flatPurple()
-        case 5:
-            view.backgroundColor = UIColor.flatRedColorDark()
-        case 6:
-            view.backgroundColor = UIColor.flatForestGreen()
+            view.backgroundColor = UIColor.flatRed()
         default:
             view.backgroundColor = .white
         }
@@ -58,10 +53,10 @@ class AddQuantityViewController: UIViewController {
         
         quantityLabel.text = Int(stepperOutlet.minimumValue).description
         quantityLabel.textColor = .white
-        fruitName.text = fruitArray![tempFruitID].fruitName
+        fruitName.text = fruitArray![fruitRcv.fruitID].fruitName
         fruitName.textColor = .white
         
-        fruitImage.image = UIImage(named: "\(tempFruitID)")
+        fruitImage.image = UIImage(named: "\(fruitRcv.fruitID)")
         fruitImage.layer.cornerRadius = 17
         fruitImage.clipsToBounds = true
     }
@@ -93,7 +88,7 @@ class AddQuantityViewController: UIViewController {
                 try realm.write {
                     let tempDataObject = User()
                     tempDataObject.stackDate = Date()
-                    tempDataObject.fruitIDtoEat = tempFruitID
+                    tempDataObject.fruitIDtoEat = fruitRcv.fruitID
                     tempDataObject.quantityToEat = stepperValue
                     realm.add(tempDataObject)
                 }

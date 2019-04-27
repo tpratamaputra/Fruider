@@ -20,22 +20,118 @@ class UserViewController: UIViewController {
     
     //TODO: - User default plist declaration (for user configurations)
     let userDefault = UserDefaults.standard
+    let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("UserNotification.plist")
+    
     
     var fruitArray: Results<Fruit>?
     var userArray: Results<User>?
+    
+    var notifArray = [NotifItem]()
+    
+    var userUserName: String = String()
 
     @IBOutlet weak var reminderTableView: UITableView!
     @IBOutlet weak var welcomeUserText: UILabel!
     @IBOutlet weak var buttonOutlet: UIButton!
     @IBOutlet weak var buttonFrame: UIView!
+    @IBOutlet weak var darkenView: UIView!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         navigationController?.navigationBar.tintColor = .orange
+        darkenView.backgroundColor = .black
+        darkenView.alpha = 0.2
+        reminderTableView.tableFooterView = UIView()
         
-        //Add dummy fruit func.
-        /* let fruit = Fruit()
+        //TODO: - loadObj from local database
+        loadObj()
+        
+        if fruitArray?.count == 0 {
+            addDummyFruit()
+        }
+        
+        if let userName = userDefault.string(forKey: "userName") {
+            welcomeUserText.text = "Hi, \(userName)!"
+            welcomeUserText.textColor = .white
+        }
+        else {
+//            addUserName()
+            welcomeUserText.text = "Hi, Wilbert!"
+            welcomeUserText.textColor = .white
+        }
+        
+        //MARK: - Load tableView custom cell
+        reminderTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
+        
+        //MARK: - userDefault line of code(s)
+        if userDefault.object(forKey: "userLastAccessed") == nil {
+            userDefault.set(Date(), forKey: "userLastAccessed")
+        }
+        
+        //TODO: - Add user to .plist using user default
+
+        buttonFrame.layer.cornerRadius = buttonFrame.frame.size.width / 2
+        buttonFrame.backgroundColor = .orange
+        buttonOutlet.adjustsImageWhenHighlighted = false
+    }
+    
+    @IBAction func addButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToAddFruit", sender: self)
+    }
+    
+    @IBAction func configButtonPressed(_ sender: Any) {
+        performSegue(withIdentifier: "goToConfigurations", sender: self)
+    }
+    
+    func loadObj () {
+        fruitArray = realm.objects(Fruit.self)
+        userArray = realm.objects(User.self)
+        reminderTableView.reloadData()
+    }
+    
+    func saveObj (object: User) {
+        do{
+            try realm.write {
+                realm.add(object)
+            }
+        } catch {
+            print("Error writing obj. w/ error message: \(error)")
+        }
+    }
+    
+    func loadPlist () {
+        if let data = try? Data(contentsOf: dataFilePath!) {
+            let decoder = PropertyListDecoder()
+            do{
+                notifArray = try decoder.decode([NotifItem].self, from: data)
+            } catch {
+                print("Error decoding plist w/ error message: \(error)")
+            }
+        }
+    }
+    
+    //MARK: - Add new user if empty
+    func addUserName () {
+        var tempText: UITextField?
+        
+        let alert = UIAlertController.init(title: "Welcome", message: "Insert user name here", preferredStyle: .alert)
+        let action = UIAlertAction.init(title: "Continue", style: .default) { (alertAction) in
+            self.userDefault.setValue(tempText!.text!, forKey: "userName")
+        }
+        
+        alert.addTextField { (textField) in
+            tempText = textField
+        }
+        
+        alert.addAction(action)
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func addDummyFruit() {
+        let fruit = Fruit()
         fruit.fruitID = 0
         fruit.fruitName = "Apple"
         fruit.funFacts = "Did you know? about 2,500 known varieties of apples are grown in the United States. More than 7,500 are grown worldwide."
@@ -159,103 +255,12 @@ class UserViewController: UIViewController {
         user.fruitIDtoEat = 0
         user.stackDate = Date()
         user.quantityToEat = 3
-        saveObj(object: user) */
-        
-        //TODO: - loadObj from local database
-        loadObj()
-        
-        //MARK: - Load tableView custom cell
-        reminderTableView.register(UINib(nibName: "TableViewCell", bundle: nil), forCellReuseIdentifier: "customCell")
-        
-        //MARK: - userDefault line of code(s)
-//        userDefault.set(Date(), forKey: "userLastAccessed")
-        
-        if !Calendar.current.isDateInToday(userDefault.object(forKey: "userLastAccessed") as! Date) {
-            userDefault.set(Date(), forKey: "userLastAccessed")
-        }
-        else {
-            //TODO: - Reset user fruit to eat quantities to zero
-            //print(userDefault.object(forKey: "userLastAccessed"))
-        }
-        
-        //TODO: - Add user to .plist using user default
-        if let userName = userDefault.string(forKey: "userName") {
-            welcomeUserText.textColor = .white
-            welcomeUserText.text = "Hi, \(userName)!"
-        }
-        else {
-            welcomeUserText.textColor = .white
-            welcomeUserText.text = "Hi, Wilbert!"
-        }
-        
-        buttonFrame.layer.cornerRadius = buttonFrame.frame.size.width / 2
-        buttonFrame.backgroundColor = .orange
-        buttonOutlet.adjustsImageWhenHighlighted = false
+        saveObj(object: user)
     }
     
-    @IBAction func addButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "goToAddFruit", sender: self)
-    }
-    
-    @IBAction func configButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: "goToConfigurations", sender: self)
-    }
-    
-    func loadObj () {
-        fruitArray = realm.objects(Fruit.self)
-        userArray = realm.objects(User.self)
-        reminderTableView.reloadData()
-    }
-    
-    func saveObj (object: User) {
-        do{
-            try realm.write {
-                realm.add(object)
-            }
-        } catch {
-            print("Error writing obj. w/ error message: \(error)")
-        }
-    }
-    
-    //MARK : - Refresh everytime view did appear
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         reminderTableView.reloadData()
-    }
-    
-    //MARK : - Notification func.
-    func notificationAlert () {
-        
-        //Notify the notification center
-        let notificationCenter = UNUserNotificationCenter.current()
-        notificationCenter.requestAuthorization(options: [.alert, .sound, .badge]) { (isSuccess, error) in
-            if isSuccess == true {
-                print("Success")
-            }
-            else {
-                print(error!)
-            }
-        }
-        
-        //Creating the notification content
-        let notificationContent = UNMutableNotificationContent()
-        notificationContent.title = "This is a test notification"
-        notificationContent.body = "This is it"
-        
-        //Creating trigger for the notification
-        //TODO: - Change the timeTrigger to user preferences interval
-        let timeTrigger = Date().addingTimeInterval(20)
-        
-        let timeComponents = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: timeTrigger)
-        
-        let notificationTrigger = UNCalendarNotificationTrigger.init(dateMatching: timeComponents, repeats: false)
-        
-        //Making the notification request
-        let uuID = UUID().uuidString
-        let notificationRequest = UNNotificationRequest(identifier: uuID, content: notificationContent, trigger: notificationTrigger)
-
-        //Registering the notification request
-        notificationCenter.add(notificationRequest) { (error) in
-        }
     }
 }
 
@@ -272,12 +277,11 @@ extension UserViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "customCell", for: indexPath) as! TableViewCell
         cell.backgroundColor = .clear
         cell.layer.cornerRadius = 10
-        //cell.cellImage.layer.cornerRadius = 17
         cell.cellImage.layer.cornerRadius = cell.cellImage.frame.size.width / 2
         cell.cellImage.clipsToBounds = true
         cell.cellImage.image = UIImage(named: "\(fruitArray?[(userArray![indexPath.row].fruitIDtoEat)].fruitID ?? 0)")
-        cell.cellTitle.text = fruitArray?[(userArray![indexPath.row].fruitIDtoEat)].fruitName
-        cell.cellDescription.text = userArray?[indexPath.row].quantityToEat.description
+        cell.cellTitle.text = "\(userArray![indexPath.row].quantityToEat.description) \(fruitArray![(userArray![indexPath.row].fruitIDtoEat)].fruitName)"
+        cell.cellDescription.isHidden = true
         return cell
     }
     
@@ -289,7 +293,7 @@ extension UserViewController: UITableViewDataSource {
     
     func isCompleted (at indexPath: IndexPath) -> UIContextualAction {
         let checkData = userArray?[indexPath.row]
-        let action = UIContextualAction(style: .destructive, title: "Completed") { (action, view, completion) in
+        let action = UIContextualAction(style: .destructive, title: "Yum!") { (action, view, completion) in
             do {
                 try self.realm.write {
                     self.realm.delete(checkData!)
@@ -302,8 +306,31 @@ extension UserViewController: UITableViewDataSource {
             
             completion(true)
         }
-        //action.image = #imageLiteral(resourceName: "icon-checkmark")
         action.backgroundColor = #colorLiteral(red: 0, green: 0.8883596063, blue: 0, alpha: 1)
+        return action
+    }
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let isNotDone = isDeleted(at: indexPath)
+        return UISwipeActionsConfiguration(actions: [isNotDone])
+    }
+    
+    func isDeleted (at indexPath: IndexPath) -> UIContextualAction {
+        let checkData = userArray?[indexPath.row]
+        let action = UIContextualAction(style: .destructive, title: "Yuck!") { (action, view, completion) in
+            do {
+                try self.realm.write {
+                    self.realm.delete(checkData!)
+                    self.userArray = self.userArray?.sorted(byKeyPath: "stackDate", ascending: true)
+                    self.reminderTableView.reloadData()
+                }
+            } catch {
+                print("Error deleting object(s)")
+            }
+            
+            completion(true)
+        }
+        action.backgroundColor = #colorLiteral(red: 0.7779501081, green: 0, blue: 0, alpha: 1)
         return action
     }
     
