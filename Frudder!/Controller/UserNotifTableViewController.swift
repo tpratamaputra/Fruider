@@ -15,6 +15,8 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("UserNotification.plist")
     
     var notifArray = [NotifItem]()
+    
+    var selectedIndex : Int = 0
 
     override func viewDidLoad() {
         
@@ -28,6 +30,12 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
         
         if notifArray.count == 0 {
             generateDummyConfigurations()
+        }
+        
+        for i in 0...3 {
+            if notifArray[i].isCheck == true {
+                selectedIndex = i
+            }
         }
     }
     
@@ -85,7 +93,7 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
         
         //Creating trigger for the notification
         //TODO: - Change the timeTrigger to user preferences interval
-        let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(60), repeats: true)
+        let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(hour) * 3600, repeats: true)
         
         //Making the notification request
         let notificationRequest = UNNotificationRequest(identifier: "fruiderLocalNotification", content: notificationContent, trigger: timeTrigger)
@@ -135,40 +143,35 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        //self.navigationItem.hidesBackButton = true
     }
-    
     
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "prototypeCell", for: indexPath)
         cell.textLabel?.text = notifArray[indexPath.row].name
-//        cell.accessoryType = notifArray[indexPath.row].isCheck ? .checkmark : .none
+        
+        if notifArray[indexPath.row].isCheck {
+            cell.accessoryType = .checkmark
+        }
+        
+        if indexPath.row == selectedIndex {
+            cell.accessoryType = .checkmark
+            notifArray[indexPath.row].isCheck  = true
+            writeToPlist(param: notifArray)
+        } else {
+            cell.accessoryType = .none
+            notifArray[indexPath.row].isCheck  = false
+            writeToPlist(param: notifArray)
+        }
+        
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-//        notifArray[indexPath.row].isCheck = !notifArray[indexPath.row].isCheck
-//        writeToPlist(param: notifArray)
-//
-//        if notifArray[3].isCheck == true {
-//            for i in 0...2 {
-//                notifArray[i].isCheck = false
-//            }
-//        }
-//
-//        tableView.deselectRow(at: indexPath, animated: true)
-//        tableView.reloadData()
-//        self.navigationItem.hidesBackButton = true
-//        viewWillAppear(true)
-        
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-        
-    }
-    
-    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.accessoryType = .none
+        selectedIndex = indexPath.row
+        self.navigationItem.hidesBackButton = true
+        tableView.deselectRow(at: indexPath, animated: true)
+        tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

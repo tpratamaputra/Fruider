@@ -35,7 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             
             //Creating trigger for the notification
             //TODO: - Change the timeTrigger to user preferences interval
-            let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(60), repeats: true)
+            let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(3) * 3600, repeats: true)
             
             //Making the notification request
             let notificationRequest = UNNotificationRequest(identifier: "fruiderLocalNotification", content: notificationContent, trigger: timeTrigger)
@@ -77,8 +77,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
-//        print(NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true))
-//        let realm = try! Realm()
-//        print(realm.configuration.fileURL)
 
