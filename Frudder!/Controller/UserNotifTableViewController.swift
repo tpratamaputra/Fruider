@@ -17,9 +17,13 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
     var notifArray = [NotifItem]()
 
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        
         loadPlist()
+        
         tableView.tableFooterView = UIView()
+        
         if notifArray.count == 0 {
             generateDummyConfigurations()
         }
@@ -31,6 +35,8 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
             if notifArray[i].isCheck == true {
                 notificationAlert(hour: (notifArray[i].timeInterval))
             }
+            
+            self.navigationItem.hidesBackButton = false
         }
         
         SVProgressHUD.showSuccess(withStatus: "Success")
@@ -78,7 +84,7 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
         
         //Creating trigger for the notification
         //TODO: - Change the timeTrigger to user preferences interval
-        let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(hour) * 3600, repeats: false)
+        let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(hour) * 3600, repeats: true)
         
         //Making the notification request
         let uuID = UUID().uuidString
@@ -116,6 +122,12 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
      writeToPlist(param: notifArray)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        //self.navigationItem.hidesBackButton = true
+    }
+    
+    
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "prototypeCell", for: indexPath)
@@ -129,10 +141,11 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
         notifArray[indexPath.row].isCheck = !notifArray[indexPath.row].isCheck
         writeToPlist(param: notifArray)
         tableView.reloadData()
+        self.navigationItem.hidesBackButton = true
+        viewWillAppear(true)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return notifArray.count
     }
-
 }
