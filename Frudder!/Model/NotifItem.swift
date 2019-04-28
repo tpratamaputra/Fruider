@@ -12,4 +12,5 @@ class NotifItem: Codable {
     var name: String = String()
     var isCheck: Bool = false
     var timeInterval: Int = Int()
+    var flagFire: Bool = true
 }

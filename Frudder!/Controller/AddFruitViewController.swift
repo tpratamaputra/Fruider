@@ -23,6 +23,8 @@ class AddFruitViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+//        self.navigationItem.largeTitleDisplayMode = .never
+//        print(self.navigationController?.navigationBar.backItem?.title)
         fruitTableView.register(UINib(nibName: "FruitDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "fruitDetailCell")
         loadObj()
     }
@@ -108,6 +110,7 @@ extension AddFruitViewController : UISearchBarDelegate {
         }
     }
 }
+
 //buttonPressedDelegate method(s)
 extension AddFruitViewController: infoButtonPressedDelegate {
     func infoButtonPressed(fruit: Fruit) {

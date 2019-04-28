@@ -102,7 +102,7 @@ class AddQuantityViewController: UIViewController {
         else {
             SVProgressHUD.showError(withStatus: "Try again!")
         }
-        Timer.scheduledTimer(timeInterval: 0.75, target: self, selector: Selector(("dismissVC")), userInfo: nil, repeats: false)
+        Timer.scheduledTimer(timeInterval: 1, target: self, selector: Selector(("dismissVC")), userInfo: nil, repeats: false)
     }
     
     @objc func dismissVC () {

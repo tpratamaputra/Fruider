@@ -22,7 +22,9 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
         
         loadPlist()
         
+        self.navigationItem.largeTitleDisplayMode = .always
         tableView.tableFooterView = UIView()
+        tableView.allowsMultipleSelection = false
         
         if notifArray.count == 0 {
             generateDummyConfigurations()
@@ -33,14 +35,13 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
         
         for i in 0...notifArray.count - 1 {
             if notifArray[i].isCheck == true {
-                notificationAlert(hour: (notifArray[i].timeInterval))
+                if notifArray[i].flagFire == true {
+                    notificationAlert(hour: (notifArray[i].timeInterval))
+                }
             }
             
             self.navigationItem.hidesBackButton = false
         }
-        
-        SVProgressHUD.showSuccess(withStatus: "Success")
-        SVProgressHUD.dismiss(withDelay: 0.75)
     }
     
     func loadPlist () {
@@ -84,11 +85,10 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
         
         //Creating trigger for the notification
         //TODO: - Change the timeTrigger to user preferences interval
-        let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(hour) * 3600, repeats: true)
+        let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(60), repeats: true)
         
         //Making the notification request
-        let uuID = UUID().uuidString
-        let notificationRequest = UNNotificationRequest(identifier: uuID, content: notificationContent, trigger: timeTrigger)
+        let notificationRequest = UNNotificationRequest(identifier: "fruiderLocalNotification", content: notificationContent, trigger: timeTrigger)
         
         //Registering the notification request
         notificationCenter.add(notificationRequest) { (error) in
@@ -97,29 +97,40 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
     }
     
     func generateDummyConfigurations () {
-     var arrayOfLOV: [String] = ["Every 3 hours", "Every 5 hours", "Every 7 hours"]
-     
-     let notifItem1 = NotifItem()
-     let notifItem2 = NotifItem()
-     let notifItem3 = NotifItem()
-     
-     notifItem1.name = arrayOfLOV[0]
-     notifItem1.isCheck = false
-     notifItem1.timeInterval = 3
-     
-     notifItem2.name = arrayOfLOV[1]
-     notifItem2.isCheck = false
-     notifItem2.timeInterval = 5
-     
-     notifItem3.name = arrayOfLOV[2]
-     notifItem3.isCheck = false
-     notifItem3.timeInterval = 7
-     
-     notifArray.append(notifItem1)
-     notifArray.append(notifItem2)
-     notifArray.append(notifItem3)
-     
-     writeToPlist(param: notifArray)
+        var arrayOfLOV: [String] = ["Remind me every 3 hours please!", "Umm... every 5 hours, I think?", "Meh. 7 hours please.", "Just turn it off already!"]
+        
+        let notifItem1 = NotifItem()
+        let notifItem2 = NotifItem()
+        let notifItem3 = NotifItem()
+        let notifItem4 = NotifItem()
+        
+        notifItem1.name = arrayOfLOV[0]
+        notifItem1.isCheck = true
+        notifItem1.timeInterval = 3
+        notifItem1.flagFire = true
+        
+    
+        notifItem2.name = arrayOfLOV[1]
+        notifItem2.isCheck = false
+        notifItem2.timeInterval = 5
+        notifItem2.flagFire = true
+    
+        notifItem3.name = arrayOfLOV[2]
+        notifItem3.isCheck = false
+        notifItem3.timeInterval = 7
+        notifItem3.flagFire = true
+        
+        notifItem4.name = arrayOfLOV[3]
+        notifItem4.isCheck = false
+        notifItem4.timeInterval = 2000
+        notifItem4.flagFire = false
+    
+        notifArray.append(notifItem1)
+        notifArray.append(notifItem2)
+        notifArray.append(notifItem3)
+        notifArray.append(notifItem4)
+        
+        writeToPlist(param: notifArray)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,20 +143,36 @@ class UserNotifTableViewController: UITableViewController, UINavigationControlle
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "prototypeCell", for: indexPath)
         cell.textLabel?.text = notifArray[indexPath.row].name
-        cell.accessoryType = notifArray[indexPath.row].isCheck ? .checkmark : .none
+//        cell.accessoryType = notifArray[indexPath.row].isCheck ? .checkmark : .none
         return cell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        notifArray[indexPath.row].isCheck = !notifArray[indexPath.row].isCheck
-        writeToPlist(param: notifArray)
-        tableView.reloadData()
-        self.navigationItem.hidesBackButton = true
-        viewWillAppear(true)
+        
+//        notifArray[indexPath.row].isCheck = !notifArray[indexPath.row].isCheck
+//        writeToPlist(param: notifArray)
+//
+//        if notifArray[3].isCheck == true {
+//            for i in 0...2 {
+//                notifArray[i].isCheck = false
+//            }
+//        }
+//
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        tableView.reloadData()
+//        self.navigationItem.hidesBackButton = true
+//        viewWillAppear(true)
+        
+        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        tableView.cellForRow(at: indexPath)?.accessoryType = .none
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        tableView.tintColor = .orange
         return notifArray.count
     }
 }

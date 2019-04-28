@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Fruider-->
+        <!--User View Controller-->
         <scene sceneID="0fW-m9-2YR">
             <objects>
                 <viewController id="trh-2D-IkN" customClass="UserViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
@@ -134,8 +134,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xY0-Fd-eLF"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Fruider" id="MVN-xu-hX0">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="hvf-Va-p3a"/>
+                    <navigationItem key="navigationItem" id="MVN-xu-hX0">
+                        <barButtonItem key="backBarButtonItem" title=" " id="HeX-cG-QXu"/>
                         <barButtonItem key="rightBarButtonItem" title="Reminder" style="done" id="gda-jT-Nn0">
                             <connections>
                                 <action selector="settingsButtonPressed:" destination="trh-2D-IkN" id="g6J-6b-e6j"/>
@@ -145,6 +145,7 @@
                     <connections>
                         <outlet property="buttonFrame" destination="E1l-wk-XrH" id="0pO-kw-btf"/>
                         <outlet property="buttonOutlet" destination="ReG-yO-Qjv" id="oHX-WH-yaf"/>
+                        <outlet property="configButtonOutlet" destination="wLb-gr-RWa" id="rv1-Ho-Pjk"/>
                         <outlet property="darkenView" destination="TLh-ws-0in" id="W9y-V2-oRC"/>
                         <outlet property="reminderTableView" destination="4rH-6N-PNL" id="97q-kf-uRM"/>
                         <outlet property="welcomeUserText" destination="2rj-TZ-D38" id="1bU-j8-Ili"/>
@@ -205,7 +206,7 @@
             </objects>
             <point key="canvasLocation" x="148" y="707"/>
         </scene>
-        <!--Notifications-->
+        <!--Reminder-->
         <scene sceneID="h16-DV-wwE">
             <objects>
                 <tableViewController id="0it-4f-Da0" customClass="UserNotifTableViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
@@ -237,7 +238,8 @@
                             <outlet property="delegate" destination="0it-4f-Da0" id="p2F-F2-xFv"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Notifications" id="vnk-Vv-CAr">
+                    <navigationItem key="navigationItem" title="Reminder" id="vnk-Vv-CAr">
+                        <barButtonItem key="backBarButtonItem" title=" " id="HSa-Je-0pF"/>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="lox-qX-f9a">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="0it-4f-Da0" id="Jqz-JU-Hrf"/>
@@ -249,7 +251,7 @@
             </objects>
             <point key="canvasLocation" x="884" y="706"/>
         </scene>
-        <!--Choose fruid!-->
+        <!--Add Fruit View Controller-->
         <scene sceneID="E3l-FE-dg2">
             <objects>
                 <viewController id="lRV-sQ-C4G" customClass="AddFruitViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
@@ -308,8 +310,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="HnU-qz-nz6"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Choose fruid!" id="HsQ-kP-LBo">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="f79-MG-f5g"/>
+                    <navigationItem key="navigationItem" id="HsQ-kP-LBo">
+                        <barButtonItem key="backBarButtonItem" title=" " id="e4X-dD-gGc"/>
                     </navigationItem>
                     <connections>
                         <outlet property="fruitTableView" destination="COm-th-n5C" id="akY-w4-Gne"/>
@@ -457,7 +459,7 @@
             </objects>
             <point key="canvasLocation" x="1714" y="-762"/>
         </scene>
-        <!--Adding da fruid!-->
+        <!--Add Quantity View Controller-->
         <scene sceneID="lx9-jb-j6Y">
             <objects>
                 <viewController id="XIT-zM-BXz" customClass="AddQuantityViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
@@ -512,7 +514,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xg3-xE-NcP"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Adding da fruid!" id="KRa-Up-ei7">
+                    <navigationItem key="navigationItem" id="KRa-Up-ei7">
                         <barButtonItem key="rightBarButtonItem" title="Save" style="done" id="Zci-h4-TvQ">
                             <connections>
                                 <action selector="doneButtonPressed:" destination="XIT-zM-BXz" id="QZs-i7-RnX"/>

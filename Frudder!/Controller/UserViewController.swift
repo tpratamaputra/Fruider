@@ -13,8 +13,6 @@ import UserNotifications
 
 class UserViewController: UIViewController {
     
-    //MARK : - Declare variable(s) here
-    
     //TODO: - Realm declaration
     let realm = try! Realm()
     
@@ -22,7 +20,7 @@ class UserViewController: UIViewController {
     let userDefault = UserDefaults.standard
     let dataFilePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("UserNotification.plist")
     
-    
+    //MARK : - Declare variable(s) here
     var fruitArray: Results<Fruit>?
     var userArray: Results<User>?
     
@@ -35,6 +33,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var buttonOutlet: UIButton!
     @IBOutlet weak var buttonFrame: UIView!
     @IBOutlet weak var darkenView: UIView!
+    @IBOutlet weak var configButtonOutlet: UIButton!
     
     override func viewDidLoad() {
         
@@ -45,6 +44,12 @@ class UserViewController: UIViewController {
         darkenView.backgroundColor = .black
         darkenView.alpha = 0.2
         reminderTableView.tableFooterView = UIView()
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .never
+        
+        //Hiding config. button for ease conv.
+        configButtonOutlet.isHidden = true
         
         //TODO: - loadObj from local database
         loadObj()
@@ -285,7 +290,8 @@ extension UserViewController: UITableViewDataSource {
         cell.cellImage.clipsToBounds = true
         cell.cellImage.image = UIImage(named: "\(fruitArray?[(userArray![indexPath.row].fruitIDtoEat)].fruitID ?? 0)")
         cell.cellTitle.text = "\(userArray![indexPath.row].quantityToEat.description) \(fruitArray![(userArray![indexPath.row].fruitIDtoEat)].fruitName)"
-        cell.cellDescription.isHidden = true
+        let dateCounterValue = dateCounter(date: userArray![indexPath.row].stackDate!)
+        cell.cellDescription.text = "Fruid added \(dateCounterValue)"
         return cell
     }
     
@@ -338,6 +344,44 @@ extension UserViewController: UITableViewDataSource {
         return action
     }
     
+    func dateCounter (date: Date) -> String {
+        
+        var hourString = ""
+        var fullTimestampString = ""
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss Z"
+
+        let dateFormatterPrint = DateFormatter()
+        dateFormatterPrint.dateFormat = "h:mm a"
+        
+        let dateFormatterPrintFull = DateFormatter()
+        dateFormatterPrintFull.dateFormat = "E, dd MMM yyy h:mm a"
+
+        hourString = "\(dateFormatterPrint.string(from: date))"
+        fullTimestampString = "\(dateFormatterPrintFull.string(from: date))"
+        
+        
+        let calendarCurr = Calendar.current
+        
+        if calendarCurr.isDateInYesterday (date) {
+            return "yesterday at \(hourString)"
+        }
+        else if calendarCurr.isDateInToday (date) {
+            return  "today at \(hourString)"
+            
+        }
+        else {
+            let startOfNow = calendarCurr.startOfDay(for: Date())
+            let startOfTimeStamp = calendarCurr.startOfDay(for: date)
+            let components = calendarCurr.dateComponents([.day], from: startOfNow, to: startOfTimeStamp)
+            let day = components.day!
+            if day < 1 {
+                return "\(-day) days ago on \(fullTimestampString)" }
+            else {
+                return( "In \(day) days  on \(fullTimestampString)" )}
+        }
+    }
 }
 
 //MARK : - UITableView delegate method(s)
