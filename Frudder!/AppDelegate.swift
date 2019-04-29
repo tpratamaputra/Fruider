@@ -32,13 +32,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let notificationContent = UNMutableNotificationContent()
             notificationContent.title = "Have you eat any fruid today?"
             notificationContent.body = "A little reminder to eat your favorite healthy fruid."
+            notificationContent.badge = 1
             
             //Creating trigger for the notification
             //TODO: - Change the timeTrigger to user preferences interval
-            let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: Double(3) * 3600, repeats: true)
+            let timeTrigger = UNTimeIntervalNotificationTrigger(timeInterval: 3 * 3600, repeats: true)
             
             //Making the notification request
-            let notificationRequest = UNNotificationRequest(identifier: "fruiderLocalNotification", content: notificationContent, trigger: timeTrigger)
+            let uuID = UUID().uuidString
+            let notificationRequest = UNNotificationRequest(identifier: uuID, content: notificationContent, trigger: timeTrigger)
             
             //Registering the notification request
             notificationCenter.add(notificationRequest) { (error) in
