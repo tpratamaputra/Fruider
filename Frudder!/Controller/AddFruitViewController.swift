@@ -27,7 +27,9 @@ class AddFruitViewController: UIViewController {
 //        print(self.navigationController?.navigationBar.backItem?.title)
         fruitTableView.register(UINib(nibName: "FruitDetailTableViewCell", bundle: nil), forCellReuseIdentifier: "fruitDetailCell")
         loadObj()
+        
     }
+    
     func loadObj() {
         fruitArray = realm.objects(Fruit.self)
         fruitTableView.reloadData()

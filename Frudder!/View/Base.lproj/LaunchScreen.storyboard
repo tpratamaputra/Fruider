@@ -18,12 +18,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fruider" translatesAutoresizingMaskIntoConstraints="NO" id="glB-Hf-q8Y">
-                                <rect key="frame" x="-2" y="337" width="419" height="223"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iPhone XRapaaja" translatesAutoresizingMaskIntoConstraints="NO" id="61Z-RV-ZJh">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="61Z-RV-ZJh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3fZ-Bi-AoK"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="61Z-RV-ZJh" secondAttribute="trailing" id="D5z-6R-yfn"/>
+                            <constraint firstItem="61Z-RV-ZJh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="IBx-VT-cSp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="61Z-RV-ZJh" secondAttribute="bottom" id="YCr-Zs-b1D"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -33,6 +38,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="fruider" width="1080" height="1080"/>
+        <image name="iPhone XRapaaja" width="276" height="597"/>
     </resources>
 </document>

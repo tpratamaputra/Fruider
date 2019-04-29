@@ -77,7 +77,6 @@ class UserViewController: UIViewController {
         }
         
         //TODO: - Add user to .plist using user default
-
         buttonFrame.layer.cornerRadius = buttonFrame.frame.size.width / 2
         buttonFrame.backgroundColor = .orange
         buttonOutlet.adjustsImageWhenHighlighted = false

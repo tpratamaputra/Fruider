@@ -470,8 +470,10 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="a6V-VG-psw">
                                 <rect key="frame" x="57" y="212" width="300" height="300"/>
                                 <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="1aB-yG-IVs"/>
                                     <constraint firstAttribute="width" constant="300" id="54R-6y-BwP"/>
                                     <constraint firstAttribute="height" constant="300" id="Q3O-hE-AqN"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="300" id="RPA-II-KdF"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yWo-hi-Cuf">
@@ -558,6 +560,6 @@
         <image name="strawberry" width="800" height="449"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Yno-xK-Kv5"/>
+        <segue reference="gZU-aG-1S1"/>
     </inferredMetricsTieBreakers>
 </document>
