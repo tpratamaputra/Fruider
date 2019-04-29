@@ -63,9 +63,9 @@ class UserViewController: UIViewController {
             welcomeUserText.textColor = .white
         }
         else {
-//            addUserName()
-            welcomeUserText.text = "Hi, Wilbert!"
+            welcomeUserText.text = "Welcome, new user!"
             welcomeUserText.textColor = .white
+            addUserName()
         }
         
         //MARK: - Load tableView custom cell
@@ -126,12 +126,15 @@ class UserViewController: UIViewController {
     func addUserName () {
         var tempText: UITextField?
         
-        let alert = UIAlertController.init(title: "Welcome", message: "Insert user name here", preferredStyle: .alert)
+        let alert = UIAlertController.init(title: "Welcome new comer!", message: nil, preferredStyle: .alert)
         let action = UIAlertAction.init(title: "Continue", style: .default) { (alertAction) in
             self.userDefault.setValue(tempText!.text!, forKey: "userName")
+            self.welcomeUserText.text = "Hi, \(tempText!.text!)!"
+            self.welcomeUserText.textColor = .white
         }
         
         alert.addTextField { (textField) in
+            textField.placeholder = "Input user name here."
             tempText = textField
         }
         

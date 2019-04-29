@@ -323,7 +323,7 @@
             </objects>
             <point key="canvasLocation" x="948" y="-50"/>
         </scene>
-        <!--Fruid Info-->
+        <!--Fruit Info View Controller-->
         <scene sceneID="evu-JF-rbr">
             <objects>
                 <viewController id="rQH-tT-IsX" customClass="FruitInfoViewController" customModule="Frudder_" customModuleProvider="target" sceneMemberID="viewController">
@@ -437,7 +437,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="5SP-ah-e3Q"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Fruid Info" id="sRc-iU-pHY"/>
+                    <navigationItem key="navigationItem" id="sRc-iU-pHY"/>
                     <connections>
                         <outlet property="calciumContent" destination="Lak-cD-HVh" id="QO2-NJ-3mR"/>
                         <outlet property="caloriesContent" destination="eja-6v-eGW" id="9vH-XV-IUU"/>

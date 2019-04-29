@@ -40,6 +40,9 @@ class FruitInfoViewController: UIViewController {
         darkenView.alpha = 0.5
         loadObj()
         
+        self.navigationItem.title = fruitArray?[fruitID].fruitName
+        self.navigationItem.largeTitleDisplayMode = .always
+        
         fruitDetailImage.image = UIImage(named: "\(fruitID!)")
         fruitDetailText.text = fruitArray?[fruitID!].fruitDesc
         servingPortion.text = "\(fruitArray![fruitID!].servingPortion)"
